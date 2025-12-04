@@ -334,7 +334,7 @@
 
     <!-- Header -->
     <header>
-        <a href="index.html" class="logo">DevStudio.</a>
+        <a href="index.html" class="logo">WebiFy.</a>
         
         <!-- Hamburger Menu Icon for Mobile -->
         <i class='bx bx-menu' id="menu-icon"></i>
@@ -347,7 +347,7 @@
             
             <a href="hire.html" class="hire-btn">Hire Me</a>
             <!-- Single Login Button for Everyone -->
-            <button id="loginBtnLabel" onclick="openLogin()" style="margin-left: 20px; cursor: pointer; background: none; border: none; font-weight: 600; font-size:1rem;">Login</button>
+            <button id="loginBtnLabel" onclick="window.openLogin()" style="margin-left: 20px; cursor: pointer; background: none; border: none; font-weight: 600; font-size:1rem;">Login</button>
         </nav>
     </header>
 
@@ -361,7 +361,7 @@
             
             <div>
                 <!-- Opens the Portfolio Popup -->
-                <button onclick="openPortfolio()" class="btn">View My Portfolio</button>
+                <button onclick="window.openPortfolio()" class="btn">View My Portfolio</button>
                 <a href="contact.html" class="contact-link">Contact Me <i class='bx bx-right-arrow-alt'></i></a>
             </div>
         </div>
@@ -543,7 +543,7 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <div class="logo" style="color: white; margin-bottom: 20px;">DevStudio.</div>
+                <div class="logo" style="color: white; margin-bottom: 20px;">WebiFy.</div>
                 <p style="opacity: 0.7;">Empowering businesses with cutting-edge web solutions.</p>
             </div>
             <div class="footer-col">
@@ -576,10 +576,13 @@
     <div class="modal" id="loginModal">
         <div class="login-content">
             <h3 style="margin-bottom: 20px; font-weight: 700;">Account Login</h3>
-            <p style="font-size:0.9rem; color:#64748b; margin-bottom:15px;">Admin use your specific credentials.</p>
+            <p style="font-size:0.9rem; color:#64748b; margin-bottom:15px;">Enter details to access.</p>
             <input type="email" id="email" placeholder="Email Address">
             <input type="password" id="password" placeholder="Password">
-            <button class="btn" style="width: 100%; margin-top: 20px;" onclick="handleLogin()">Sign In</button>
+            
+            <button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.handleLogin()">Login</button>
+            <button class="btn" style="width: 100%; margin-top: 10px; background: #4f46e5;" onclick="window.handleSignUp()">Create Account</button>
+            
             <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top: 15px; background: none; border: none; cursor: pointer; color: #94a3b8;">Cancel</button>
         </div>
     </div>
@@ -592,11 +595,11 @@
                     <h2 style="font-weight: 800; color: var(--primary-blue);">My Portfolio</h2>
                     <p style="color: #64748b;">A collection of my best work.</p>
                 </div>
-                <i class='bx bx-x close-btn' onclick="closePortfolio()"></i>
+                <i class='bx bx-x close-btn' onclick="window.closePortfolio()"></i>
             </div>
 
             <!-- Admin Add Button (Only visible if Admin Logged In) -->
-            <button id="adminAddBtn" class="add-project-btn" onclick="openAddModal()">
+            <button id="adminAddBtn" class="add-project-btn" onclick="window.openAddModal()">
                 <i class='bx bx-plus'></i> Add New Project
             </button>
 
@@ -619,7 +622,7 @@
             
             <div style="margin-top: 20px; text-align: right;">
                 <button onclick="document.getElementById('addProjectModal').style.display='none'" style="margin-right: 10px; border: none; background: none; cursor: pointer;">Cancel</button>
-                <button class="btn" onclick="saveProject()">Save Project</button>
+                <button class="btn" onclick="window.saveProject()">Save Project</button>
             </div>
         </div>
     </div>
@@ -643,166 +646,212 @@
     
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-    <script>
-        // --- DATA STORAGE ---
-        // Pre-filled data. In a real app, this comes from a database.
-        let projects = [
-            { 
-                id: 1, 
-                title: "E-Commerce App", 
-                desc: "A full-featured shopping platform with cart, payment gateway, and admin dashboard.", 
-                link: "#",
-                images: [
-                    "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=80"
-                ] 
-            },
-            { 
-                id: 2, 
-                title: "Corporate Website", 
-                desc: "Modern landing page for a finance company with animation and contact forms.", 
-                link: "#",
-                images: [
-                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-                ]
+    <!-- FIREBASE AND APP LOGIC -->
+    <script type="module">
+        // --- FIREBASE IMPORTS ---
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+        // --- ⚠️ CONFIGURATION: Provided by user ---
+        const firebaseConfig = {
+          apiKey: "AIzaSyDAjm5p9EJueq3eMq7WY9u7cT5GDppedaY",
+          authDomain: "devstudio-36b8e.firebaseapp.com",
+          projectId: "devstudio-36b8e",
+          storageBucket: "devstudio-36b8e.firebasestorage.app",
+          messagingSenderId: "220640508882",
+          appId: "1:220640508882:web:9171e28a580ab6dec1e60b",
+          measurementId: "G-0FSZ1500XG"
+        };
+
+        // --- INITIALIZE FIREBASE ---
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const portfolioCollection = collection(db, "portfolio");
+
+        // --- LOCAL STATE ---
+        let projects = [];
+        let isAdmin = false;
+
+        // --- FETCH DATA FROM FIRESTORE ---
+        async function fetchProjects() {
+            try {
+                const querySnapshot = await getDocs(portfolioCollection);
+                projects = [];
+                querySnapshot.forEach((doc) => {
+                    projects.push({ id: doc.id, ...doc.data() });
+                });
+                // Sort by date if available
+                projects.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                window.renderProjects();
+            } catch (error) {
+                console.error("Error getting projects:", error);
             }
-        ];
+        }
 
-        let isAdmin = false; // State to track if Admin is logged in
+        // --- GLOBAL FUNCTIONS (Attached to window) ---
 
-        // --- LOGIN LOGIC ---
-        function openLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+        window.openLogin = function() { 
+            document.getElementById('loginModal').style.display = 'flex'; 
+        }
 
-        function handleLogin() {
+        // LOGIN FUNCTION
+        window.handleLogin = async function() {
             const email = document.getElementById('email').value;
             const pass = document.getElementById('password').value;
 
-            // Simple Client-Side Check (For Demo)
-            // Real authentication should happen on backend/firebase
-            if (email === "admin@devstudio.com" && pass === "admin123") {
-                isAdmin = true;
-                alert("Admin Logged In Successfully!");
-                document.getElementById('loginBtnLabel').innerText = "Admin";
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, pass);
+                const user = userCredential.user;
+                
+                // Check if admin
+                if (user.email === "superman@sharmaji.com") {
+                    isAdmin = true;
+                    alert("Admin Logged In Successfully!");
+                    document.getElementById('loginBtnLabel').innerText = "Admin";
+                } else {
+                    isAdmin = false;
+                    alert("Logged in Successfully!");
+                    document.getElementById('loginBtnLabel').innerText = "Account";
+                }
+                
                 document.getElementById('loginModal').style.display = 'none';
-            } else if (email && pass) {
-                // Regular User
-                isAdmin = false;
-                alert("Welcome back!");
+                
+                // Refresh buttons
+                const addBtn = document.getElementById('adminAddBtn');
+                if(addBtn) addBtn.style.display = isAdmin ? "inline-block" : "none";
+                window.renderProjects(); 
+
+            } catch (error) {
+                alert("Login Failed: " + error.message);
+            }
+        }
+
+        // SIGN UP FUNCTION (Create Account)
+        window.handleSignUp = async function() {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+
+            if(pass.length < 6) {
+                alert("Password should be at least 6 characters.");
+                return;
+            }
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+                alert("Account Created Successfully! You are now logged in.");
                 document.getElementById('loginBtnLabel').innerText = "Account";
                 document.getElementById('loginModal').style.display = 'none';
-            } else {
-                alert("Please enter valid details.");
+            } catch (error) {
+                alert("Error Creating Account: " + error.message);
             }
         }
 
-        // --- PORTFOLIO LOGIC ---
-        function openPortfolio() { 
+        window.openPortfolio = function() { 
             document.getElementById('portfolioModal').style.display = 'flex'; 
-            renderProjects();
+            if(projects.length === 0) fetchProjects();
+            else window.renderProjects();
             
-            // Show/Hide Admin Button based on login
             const addBtn = document.getElementById('adminAddBtn');
-            if(isAdmin) {
-                addBtn.style.display = "inline-block";
-            } else {
-                addBtn.style.display = "none";
-            }
+            addBtn.style.display = isAdmin ? "inline-block" : "none";
         }
 
-        function closePortfolio() { document.getElementById('portfolioModal').style.display = 'none'; }
+        window.closePortfolio = function() { document.getElementById('portfolioModal').style.display = 'none'; }
 
-        function renderProjects() {
+        window.renderProjects = function() {
             const grid = document.getElementById('portfolioGrid');
-            grid.innerHTML = ""; // Clear existing
+            grid.innerHTML = ""; 
 
             projects.forEach(proj => {
-                // Create Card
                 let card = document.createElement('div');
                 card.className = 'portfolio-card';
                 
-                // If Admin, add delete button
-                let deleteHtml = isAdmin ? `<button class="delete-btn" style="display:flex;" onclick="deleteProject(${proj.id}, event)"><i class='bx bx-trash'></i></button>` : '';
+                let deleteHtml = isAdmin ? `<button class="delete-btn" style="display:flex;" onclick="window.deleteProject('${proj.id}', event)"><i class='bx bx-trash'></i></button>` : '';
+                let coverImage = (proj.images && proj.images.length > 0) ? proj.images[0] : 'https://via.placeholder.com/300';
 
                 card.innerHTML = `
                     ${deleteHtml}
-                    <img src="${proj.images[0]}" class="portfolio-img" onclick="openGallery(${proj.id})">
+                    <img src="${coverImage}" class="portfolio-img" onclick="window.openGallery('${proj.id}')">
                     <div class="portfolio-info">
                         <h4>${proj.title}</h4>
                         <p>${proj.desc}</p>
-                        <button onclick="openGallery(${proj.id})" style="background:none; border:none; color:var(--primary-blue); font-weight:600; cursor:pointer;">View Website &rarr;</button>
+                        <button onclick="window.openGallery('${proj.id}')" style="background:none; border:none; color:var(--primary-blue); font-weight:600; cursor:pointer;">View Website &rarr;</button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
         }
 
-        // --- ADMIN: ADD / DELETE ---
-        function openAddModal() { document.getElementById('addProjectModal').style.display = 'flex'; }
+        window.openAddModal = function() { document.getElementById('addProjectModal').style.display = 'flex'; }
 
-        function saveProject() {
+        window.saveProject = async function() {
             const title = document.getElementById('newTitle').value;
             const desc = document.getElementById('newDesc').value;
             const link = document.getElementById('newLink').value;
             const rawImages = document.getElementById('newImages').value;
 
-            // Split images by comma or new line
             const images = rawImages.split(/[\n,]+/).map(url => url.trim()).filter(url => url !== "");
 
             if (title && images.length > 0) {
                 const newProj = {
-                    id: Date.now(), // Unique ID based on timestamp
                     title: title,
                     desc: desc,
                     link: link,
-                    images: images
+                    images: images,
+                    createdAt: new Date()
                 };
-                projects.unshift(newProj); // Add to top
-                renderProjects();
-                document.getElementById('addProjectModal').style.display = 'none';
-                
-                // Clear inputs
-                document.getElementById('newTitle').value = "";
-                document.getElementById('newDesc').value = "";
-                document.getElementById('newLink').value = "";
-                document.getElementById('newImages').value = "";
+
+                try {
+                    await addDoc(portfolioCollection, newProj);
+                    alert("Project Uploaded!");
+                    document.getElementById('addProjectModal').style.display = 'none';
+                    document.getElementById('newTitle').value = "";
+                    document.getElementById('newDesc').value = "";
+                    document.getElementById('newLink').value = "";
+                    document.getElementById('newImages').value = "";
+                    fetchProjects();
+                } catch(e) {
+                    alert("Error saving: " + e.message);
+                }
             } else {
-                alert("Please add at least a Title and one Image URL.");
+                alert("Please add Title and Image.");
             }
         }
 
-        function deleteProject(id, event) {
-            event.stopPropagation(); // Prevent opening gallery
-            if(confirm("Are you sure you want to delete this project?")) {
-                projects = projects.filter(p => p.id !== id);
-                renderProjects();
+        window.deleteProject = async function(id, event) {
+            event.stopPropagation();
+            if(confirm("Delete this project?")) {
+                try {
+                    await deleteDoc(doc(db, "portfolio", id));
+                    projects = projects.filter(p => p.id !== id);
+                    window.renderProjects();
+                } catch(e) {
+                    alert("Error deleting: " + e.message);
+                }
             }
         }
 
-        // --- GALLERY VIEW (All Photos) ---
-        function openGallery(id) {
+        window.openGallery = function(id) {
             const proj = projects.find(p => p.id === id);
             if(!proj) return;
-
             document.getElementById('galleryTitle').innerText = proj.title;
             document.getElementById('galleryDesc').innerText = proj.desc;
             document.getElementById('galleryLink').href = proj.link;
-
             const body = document.getElementById('galleryBody');
-            body.innerHTML = ""; // Clear old images
-            
-            proj.images.forEach(imgUrl => {
-                let img = document.createElement('img');
-                img.src = imgUrl;
-                img.className = 'gallery-img';
-                body.appendChild(img);
-            });
-
+            body.innerHTML = ""; 
+            if(proj.images) {
+                proj.images.forEach(imgUrl => {
+                    let img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.className = 'gallery-img';
+                    body.appendChild(img);
+                });
+            }
             document.getElementById('galleryModal').style.display = 'flex';
         }
 
         // --- UTILS ---
-        // Close modals when clicking outside
         window.onclick = function(event) {
             const modals = ['loginModal', 'portfolioModal', 'addProjectModal', 'galleryModal'];
             modals.forEach(id => {
@@ -812,7 +861,6 @@
             });
         }
 
-        // --- Mobile Menu Toggle ---
         let menuIcon = document.querySelector('#menu-icon');
         let navbar = document.querySelector('.navbar');
 
@@ -846,6 +894,24 @@
             backSpeed: 60,
             loop: true
         });
+
+        fetchProjects();
+
+        // Check Auth Status on Load (Persistence)
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+        onAuthStateChanged(auth, (user) => {
+            if (user && user.email === "superman@sharmaji.com") {
+                isAdmin = true;
+                document.getElementById('loginBtnLabel').innerText = "Admin";
+            } else if (user) {
+                isAdmin = false;
+                document.getElementById('loginBtnLabel').innerText = "Account";
+            } else {
+                isAdmin = false;
+                document.getElementById('loginBtnLabel').innerText = "Login";
+            }
+        });
+
     </script>
 
 </body>
