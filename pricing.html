@@ -40,7 +40,6 @@
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
         .hire-btn { background: var(--primary); color: white !important; padding: 10px 25px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); }
 
-        /* Mobile Menu Icon */
         #menu-icon { display: none; font-size: 1.8rem; color: var(--secondary); cursor: pointer; }
 
         /* --- HERO --- */
@@ -67,91 +66,103 @@
 
         /* --- TEMPLATE CATALOG --- */
         .catalog-section { padding: 80px 10%; background: #ffffff; }
-        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        /* 2 Columns on Desktop */
+        .template-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); 
+            gap: 30px; 
+        }
         .template-card {
             background: white; border: 1px solid #f1f5f9; border-radius: 16px; overflow: hidden;
             transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; position: relative;
         }
-        .template-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .t-image-container { position: relative; height: 200px; background: #eee; overflow: hidden; cursor: pointer; }
+        .template-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .t-image-container { position: relative; height: 240px; background: #eee; overflow: hidden; cursor: pointer; }
         .t-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .template-card:hover .t-img { transform: scale(1.05); }
         .t-price-tag { position: absolute; bottom: 10px; right: 10px; background: rgba(15, 23, 42, 0.9); color: white; padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 0.9rem; }
+        
         .t-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .t-title { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin-bottom: 10px; }
-        .t-features { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .t-title { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin-bottom: 10px; }
+        
+        /* Restricted Features View (Only 1 line) */
+        .t-features { 
+            margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; 
+            height: 32px; overflow: hidden; 
+        }
         .t-badge { font-size: 0.75rem; background: #eff6ff; color: var(--primary); padding: 4px 10px; border-radius: 4px; font-weight: 600; }
-        .t-actions { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn-demo { border: 1px solid var(--primary); color: var(--primary); text-align: center; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; cursor: pointer; }
-        .btn-demo:hover { background: #eff6ff; }
-        .btn-buy { background: var(--primary); color: white; text-align: center; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        
+        /* --- ACTION BUTTONS (FIXED) --- */
+        .t-actions { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        
+        .btn-view {
+            border: 1px solid var(--primary); background: transparent; color: var(--primary);
+            padding: 12px; text-align: center; border-radius: 6px; text-decoration: none; 
+            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-view:hover { background: #eff6ff; }
 
-        /* DELETE BUTTON STYLE */
+        .btn-buy { 
+            background: #25D366; color: white; border: none; /* WhatsApp Green */
+            padding: 12px; text-align: center; border-radius: 6px; text-decoration: none; 
+            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-buy:hover { background: #20bd5a; transform: translateY(-2px); }
+
         .delete-btn {
             position: absolute; top: 10px; right: 10px; z-index: 100;
             background: #ef4444; color: white; border: none; padding: 8px;
             border-radius: 50%; cursor: pointer; font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            display: none; /* Hidden by default */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3); display: none;
         }
-        .delete-btn:hover { background: #dc2626; transform: scale(1.1); }
 
-        /* --- MODALS (Gallery + Admin) --- */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; flex-direction: column; }
-        .modal-content { max-width: 90%; max-height: 80vh; object-fit: contain; }
-        .modal-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
-        .modal-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; transform: translateY(-50%); }
-        .modal-btn { background: rgba(255,255,255,0.2); color: white; padding: 15px; border-radius: 50%; cursor: pointer; border: none; font-size: 20px; }
+        /* --- MODALS --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        
+        .detail-content { 
+            background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 16px; 
+            display: flex; flex-direction: column; overflow: hidden; position: relative;
+        }
+        .detail-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .detail-body { padding: 0; overflow-y: auto; display: flex; flex-direction: column; }
+        
+        .detail-img-box { width: 100%; height: 350px; background: #f0f0f0; position: relative; }
+        .detail-img { width: 100%; height: 100%; object-fit: contain; background: #0f172a; }
+        .detail-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; transform: translateY(-50%); }
+        .detail-nav button { background: rgba(255,255,255,0.2); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%; font-size: 1.5rem; transition:0.3s; }
+        .detail-nav button:hover { background: rgba(255,255,255,0.4); }
+        
+        .detail-info { padding: 25px; }
+        .detail-tags { margin: 15px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+        .detail-price { font-size: 1.8rem; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
 
-        /* Admin Form Modal Styles */
+        /* Form Box */
         .form-box { background: white; padding: 30px; border-radius: 12px; width: 400px; max-width: 90%; }
         .form-box h3 { margin-bottom: 20px; color: var(--secondary); }
         .form-input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
         .form-btn { width: 100%; background: var(--primary); color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
 
-        /* --- CTA & FOOTER --- */
         .cta-section { padding: 80px 10%; text-align: center; }
         .cta-box { background: linear-gradient(135deg, var(--primary), #3730a3); border-radius: 24px; padding: 60px 20px; color: white; }
         .whatsapp-btn { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
-
         .admin-trigger { font-size: 0.8rem; color: #ccc; cursor: pointer; text-decoration: none; margin-top: 20px; display: inline-block; }
 
-        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
             header { padding: 1rem 5%; }
             #menu-icon { display: block; z-index: 1001; }
-
-            .nav-links {
-                position: absolute;
-                top: 100%; left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 20px;
-                border-bottom: 1px solid #eee;
-                display: none;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-            }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; align-items: flex-start; padding: 20px; border-bottom: 1px solid #eee; display: none; box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
             .nav-links.active { display: flex; }
             .nav-links a { margin: 10px 0; width: 100%; font-size: 1.1rem; }
             .hire-btn { width: 100%; text-align: center; display: inline-block; margin-top: 10px; }
-
             .hero { padding: 120px 5% 60px; }
-            .hero h1 { font-size: 2.2rem; }
-            
             .pricing-section, .catalog-section, .cta-section { padding: 60px 5%; }
             .pricing-grid { grid-template-columns: 1fr; }
             .price-card.popular { transform: scale(1); }
-            
-            .template-grid { grid-template-columns: 1fr; }
-            
+            /* Mobile: 1 column for templates */
+            .template-grid { grid-template-columns: 1fr; } 
             .cta-box { padding: 40px 20px; }
+            .detail-img-box { height: 250px; }
             .whatsapp-btn { width: 100%; justify-content: center; }
-            
-            /* Modal Mobile Fixes */
-            .modal-content { max-width: 95%; }
-            .modal-nav { padding: 0 10px; }
         }
     </style>
 </head>
@@ -160,10 +171,7 @@
     <!-- HEADER -->
     <header>
         <a href="index.html" class="logo">WebiFy.</a>
-        
-        <!-- Mobile Menu Icon -->
         <i class="fas fa-bars" id="menu-icon" onclick="window.toggleMenu()"></i>
-
         <nav class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -185,37 +193,19 @@
         <h2 style="text-align:center; margin-bottom:40px;">Custom Plans</h2>
         <div class="pricing-grid">
             <div class="price-card">
-                <h3 class="plan-name">Starter</h3>
-                <div class="plan-price">₹499</div>
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> 1 Page Website</li>
-                    <li><i class="fas fa-check"></i> Mobile Responsive</li>
-                    <li><i class="fas fa-check"></i> Contact Button</li>
-                </ul>
-                <!-- WhatsApp Link Added -->
-                <a href="https://wa.me/919376917149?text=Hello,%20I%20am%20interested%20in%20the%20Starter%20Plan%20(₹499)." target="_blank" class="btn-full">Choose Starter</a>
+                <h3 class="plan-name">Starter</h3><div class="plan-price">₹499</div>
+                <ul class="features-list"><li><i class="fas fa-check"></i> 1 Page Website</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Contact Button</li></ul>
+                <a href="https://wa.me/919376917149?text=Hello,%20Starter%20Plan." target="_blank" class="btn-full">Choose Starter</a>
             </div>
             <div class="price-card popular">
-                <h3 class="plan-name">Professional</h3>
-                <div class="plan-price">₹1,599</div>
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> 5 Pages Website</li>
-                    <li><i class="fas fa-check"></i> Basic SEO</li>
-                    <li><i class="fas fa-check"></i> Contact Form</li>
-                </ul>
-                <!-- WhatsApp Link Added -->
-                <a href="https://wa.me/919376917149?text=Hello,%20I%20am%20interested%20in%20the%20Professional%20Plan%20(₹1,599)." target="_blank" class="btn-full" style="background:var(--primary)">Choose Professional</a>
+                <h3 class="plan-name">Professional</h3><div class="plan-price">₹1,599</div>
+                <ul class="features-list"><li><i class="fas fa-check"></i> 5 Pages Website</li><li><i class="fas fa-check"></i> Basic SEO</li><li><i class="fas fa-check"></i> Contact Form</li></ul>
+                <a href="https://wa.me/919376917149?text=Hello,%20Professional%20Plan." target="_blank" class="btn-full" style="background:var(--primary)">Choose Professional</a>
             </div>
             <div class="price-card">
-                <h3 class="plan-name">Premium</h3>
-                <div class="plan-price">₹4,000</div>
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> 10 Pages Website</li>
-                    <li><i class="fas fa-check"></i> Animations</li>
-                    <li><i class="fas fa-check"></i> Speed Boost</li>
-                </ul>
-                <!-- WhatsApp Link Added -->
-                <a href="https://wa.me/919376917149?text=Hello,%20I%20am%20interested%20in%20the%20Premium%20Plan%20(₹4,000)." target="_blank" class="btn-full">Choose Premium</a>
+                <h3 class="plan-name">Premium</h3><div class="plan-price">₹4,000</div>
+                <ul class="features-list"><li><i class="fas fa-check"></i> 10 Pages Website</li><li><i class="fas fa-check"></i> Animations</li><li><i class="fas fa-check"></i> Speed Boost</li></ul>
+                <a href="https://wa.me/919376917149?text=Hello,%20Premium%20Plan." target="_blank" class="btn-full">Choose Premium</a>
             </div>
         </div>
     </section>
@@ -223,7 +213,7 @@
     <!-- TEMPLATE CATALOG -->
     <section id="catalog" class="catalog-section">
         <h2 style="text-align:center; margin-bottom:10px;">Ready-Made Templates</h2>
-        <p style="text-align:center; color:#666; margin-bottom:40px;">Browse my collection. Click "View Photos" to see details.</p>
+        <p style="text-align:center; color:#666; margin-bottom:40px;">High-quality website designs ready for deployment.</p>
 
         <!-- Template Grid (Populated by JS) -->
         <div class="template-grid" id="templateGrid"></div>
@@ -234,45 +224,55 @@
         <div class="cta-box">
             <h2>Start Your Website Today</h2>
             <p>Ready to take your business online?</p>
-            <!-- WhatsApp Link Added -->
             <a href="https://wa.me/919376917149?text=Hello,%20I%20want%20to%20discuss%20a%20new%20website%20project." target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
-        
-        <!-- HIDDEN ADMIN BUTTON -->
         <div style="margin-top: 50px;">
-            <span class="admin-trigger" onclick="window.openAdminLogin()">Admin Access (Edit/Delete)</span>
+            <span class="admin-trigger" onclick="window.openAdminLogin()">Admin Access</span>
         </div>
     </section>
 
     <!-- ================= MODALS ================= -->
 
-    <!-- 1. PHOTO GALLERY MODAL -->
-    <div id="photoModal" class="modal">
-        <span class="modal-close" onclick="document.getElementById('photoModal').style.display='none'">&times;</span>
-        <img class="modal-content" id="modalImg">
-        <div class="modal-nav">
-            <button class="modal-btn" onclick="window.prevImage()"><i class="fas fa-chevron-left"></i></button>
-            <button class="modal-btn" onclick="window.nextImage()"><i class="fas fa-chevron-right"></i></button>
+    <!-- 1. DETAIL POPUP (Full Info) -->
+    <div id="detailModal" class="modal">
+        <div class="detail-content">
+            <div class="detail-header">
+                <h3 id="dTitle" style="margin:0;">Website Title</h3>
+                <i class="fas fa-times" style="font-size:1.5rem; cursor:pointer;" onclick="document.getElementById('detailModal').style.display='none'"></i>
+            </div>
+            <div class="detail-body">
+                <div class="detail-img-box">
+                    <img id="dImg" class="detail-img" src="" alt="">
+                    <div class="detail-nav">
+                        <button onclick="window.prevImage()"><i class="fas fa-chevron-left"></i></button>
+                        <button onclick="window.nextImage()"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="detail-info">
+                    <div id="dPrice" class="detail-price">₹2,500</div>
+                    <div id="dTags" class="detail-tags"></div>
+                    <p style="color:#666; margin-bottom:20px;">Includes complete setup, hosting guidance, and minor customization. Click Buy Now to contact on WhatsApp.</p>
+                    <a id="dBuyBtn" href="#" target="_blank" class="btn-buy" style="display:block; width:100%; background: #25D366;">
+                        <i class="fab fa-whatsapp"></i> Buy This Template
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- 2. ADMIN LOGIN MODAL -->
-    <div id="loginModal" class="modal" style="background-color: rgba(0,0,0,0.8);">
+    <div id="loginModal" class="modal">
         <div class="form-box">
             <h3>Account Login</h3>
-            <p style="font-size:0.9rem; color:#64748b; margin-bottom:15px;">Enter details to access.</p>
-            <input type="email" id="email" placeholder="Email Address">
-            <input type="password" id="password" placeholder="Password">
-            
-            <button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.handleLogin()">Login</button>
-            <button class="btn" style="width: 100%; margin-top: 10px; background: #4f46e5;" onclick="window.handleSignUp()">Create Account</button>
-            
-            <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px; background:none; border:none; cursor:pointer;">Cancel</button>
+            <input type="email" id="email" class="form-input" placeholder="Email Address">
+            <input type="password" id="password" class="form-input" placeholder="Password">
+            <button class="form-btn" onclick="window.handleLogin()">Login</button>
+            <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px; background:none; border:none; cursor:pointer; width:100%;">Cancel</button>
         </div>
     </div>
 
     <!-- 3. ADD TEMPLATE FORM MODAL -->
-    <div id="addModal" class="modal" style="background-color: rgba(0,0,0,0.8);">
+    <div id="addModal" class="modal">
         <div class="form-box">
             <h3>Add New Website</h3>
             <input type="text" id="newTitle" class="form-input" placeholder="Website Name">
@@ -281,18 +281,15 @@
             <textarea id="newFeatures" class="form-input" placeholder="Features (comma separated: Clean, Fast, SEO)"></textarea>
             <textarea id="newGallery" class="form-input" placeholder="Gallery URLs (comma separated)"></textarea>
             <button class="form-btn" onclick="window.addNewTemplate()">Add Website</button>
-            <button onclick="document.getElementById('addModal').style.display='none'" style="margin-top:10px; background:none; border:none; cursor:pointer;">Close</button>
+            <button onclick="document.getElementById('addModal').style.display='none'" style="margin-top:10px; background:none; border:none; cursor:pointer; width:100%;">Close</button>
         </div>
     </div>
 
-    <!-- SCRIPT -->
     <script type="module">
-        // --- FIREBASE IMPORTS ---
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
-        // --- ⚠️ CONFIGURATION: Provided by user ---
         const firebaseConfig = {
           apiKey: "AIzaSyDAjm5p9EJueq3eMq7WY9u7cT5GDppedaY",
           authDomain: "devstudio-36b8e.firebaseapp.com",
@@ -303,81 +300,57 @@
           measurementId: "G-0FSZ1500XG"
         };
 
-        // --- INITIALIZE FIREBASE ---
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const templateCollection = collection(db, "templates");
 
-        // --- MOBILE MENU TOGGLE ---
         window.toggleMenu = function() {
             const nav = document.getElementById('navLinks');
             const icon = document.getElementById('menu-icon');
             nav.classList.toggle('active');
-            
-            // Toggle Icon
-            if(nav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            if(nav.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
         }
 
-        // --- DATA SECTION ---
         let templates = [];
         let isAdmin = false; 
 
-        // --- FETCH DATA FROM FIREBASE ---
         async function fetchTemplates() {
             try {
                 const q = await getDocs(templateCollection);
                 templates = [];
-                q.forEach((doc) => {
-                    templates.push({ id: doc.id, ...doc.data() });
-                });
+                q.forEach((doc) => { templates.push({ id: doc.id, ...doc.data() }); });
                 window.renderTemplates();
-            } catch (e) {
-                console.error("Error fetching templates:", e);
-            }
+            } catch (e) { console.error("Error fetching templates:", e); }
         }
 
-        // --- RENDER FUNCTION ---
         window.renderTemplates = function() {
             const grid = document.getElementById('templateGrid');
             grid.innerHTML = "";
             templates.forEach((item, index) => {
                 let featuresHtml = item.features ? item.features.map(f => `<span class="t-badge">${f.trim()}</span>`).join('') : '';
-                
-                let deleteBtnHtml = isAdmin ? 
-                    `<button class="delete-btn" style="display:block" onclick="window.deleteTemplate('${item.id}', event)">
-                        <i class="fas fa-trash"></i>
-                     </button>` 
-                    : '';
+                let deleteBtnHtml = isAdmin ? `<button class="delete-btn" style="display:block" onclick="window.deleteTemplate('${item.id}', event)"><i class="fas fa-trash"></i></button>` : '';
 
-                // WhatsApp Logic
-                let waNumber = "919376917149";
-                let waMessage = `Hello, I want to buy the "${item.title}" website template for ${item.price}. Please provide me more details.`;
-                let waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMessage)}`;
+                // Generate WhatsApp Link directly for the Buy Button
+                let waMsg = `Hello, I want to buy the "${item.title}" template for ${item.price}.`;
+                let waLink = `https://wa.me/919376917149?text=${encodeURIComponent(waMsg)}`;
 
                 let card = `
                     <div class="template-card">
                         ${deleteBtnHtml}
-                        <div class="t-image-container" onclick="window.openGallery(${index})">
+                        <div class="t-image-container" onclick="window.openDetail(${index})">
                             <img src="${item.cover}" alt="${item.title}" class="t-img">
                             <div class="t-price-tag">${item.price}</div>
                         </div>
                         <div class="t-content">
                             <h3 class="t-title">${item.title}</h3>
                             <div class="t-features">${featuresHtml}</div>
+                            
+                            <!-- TWO BUTTONS Added Here -->
                             <div class="t-actions">
-                                <button class="btn-demo" onclick="window.openGallery(${index})">
-                                    <i class="far fa-images"></i> View Photos
-                                </button>
-                                <a href="${waLink}" target="_blank" class="btn-buy">
-                                    <i class="fab fa-whatsapp"></i> Buy Now
-                                </a>
+                                <button class="btn-view" onclick="window.openDetail(${index})">View Details</button>
+                                <a href="${waLink}" target="_blank" class="btn-buy">Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -386,86 +359,62 @@
             });
         }
         
-        // --- GALLERY LOGIC ---
+        // --- DETAIL POPUP LOGIC ---
         let currentIdx = 0;
         let imgIdx = 0;
         
-        window.openGallery = function(index) {
+        window.openDetail = function(index) {
             currentIdx = index;
             imgIdx = 0;
+            const item = templates[index];
+            
+            // Populate Modal
+            document.getElementById('dTitle').innerText = item.title;
+            document.getElementById('dPrice').innerText = item.price;
+            
+            // Tags
+            let featuresHtml = item.features ? item.features.map(f => `<span class="t-badge">${f.trim()}</span>`).join('') : '';
+            document.getElementById('dTags').innerHTML = featuresHtml;
+
+            // Buy Link in Modal
+            let waMsg = `Hello, I saw the details of "${item.title}" (${item.price}) and I am interested.`;
+            document.getElementById('dBuyBtn').href = `https://wa.me/919376917149?text=${encodeURIComponent(waMsg)}`;
+
             window.updateImage();
-            document.getElementById('photoModal').style.display = "flex";
+            document.getElementById('detailModal').style.display = "flex";
         }
 
         window.updateImage = function() {
-            const modalImg = document.getElementById('modalImg');
-            if(templates[currentIdx].gallery && templates[currentIdx].gallery.length > 0) {
-                modalImg.src = templates[currentIdx].gallery[imgIdx];
-            }
+            const item = templates[currentIdx];
+            const modalImg = document.getElementById('dImg');
+            // If gallery exists use it, else use cover
+            let images = (item.gallery && item.gallery.length > 0) ? item.gallery : [item.cover];
+            
+            // Safety check for index
+            if(imgIdx < 0) imgIdx = images.length - 1;
+            if(imgIdx >= images.length) imgIdx = 0;
+
+            modalImg.src = images[imgIdx];
         }
 
-        window.nextImage = function() {
-            const len = templates[currentIdx].gallery.length;
-            imgIdx = (imgIdx + 1) % len;
-            window.updateImage();
-        }
+        window.nextImage = function() { imgIdx++; window.updateImage(); }
+        window.prevImage = function() { imgIdx--; window.updateImage(); }
 
-        window.prevImage = function() {
-            const len = templates[currentIdx].gallery.length;
-            imgIdx = (imgIdx - 1 + len) % len;
-            window.updateImage();
-        }
+        window.openAdminLogin = function() { document.getElementById('loginModal').style.display = 'flex'; }
 
-        // --- ADMIN / LOGIN LOGIC ---
-        window.openAdminLogin = function() {
-            // Re-purposed to open main login if clicked
-            document.getElementById('loginModal').style.display = 'flex';
-        }
-
-        // LOGIN FUNCTION
         window.handleLogin = async function() {
             const email = document.getElementById('email').value;
             const pass = document.getElementById('password').value;
-
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, pass);
-                const user = userCredential.user;
-                
-                // Check if admin
-                if (user.email === "superman@sharmaji.com") {
+                if (userCredential.user.email === "superman@sharmaji.com") {
                     isAdmin = true;
-                    alert("Admin Logged In Successfully!");
+                    alert("Admin Logged In!");
                     window.renderTemplates();
                     document.getElementById('addModal').style.display = 'flex';
-                } else {
-                    isAdmin = false;
-                    alert("Logged in Successfully!");
-                }
-                
+                } else { alert("User Logged in (No Admin Access)"); }
                 document.getElementById('loginModal').style.display = 'none';
-
-            } catch (error) {
-                alert("Login Failed: " + error.message);
-            }
-        }
-
-        // SIGN UP FUNCTION
-        window.handleSignUp = async function() {
-            const email = document.getElementById('email').value;
-            const pass = document.getElementById('password').value;
-
-            if(pass.length < 6) {
-                alert("Password should be at least 6 characters.");
-                return;
-            }
-
-            try {
-                await createUserWithEmailAndPassword(auth, email, pass);
-                alert("Account Created Successfully! You are now logged in.");
-                document.getElementById('loginModal').style.display = 'none';
-            } catch (error) {
-                alert("Error Creating Account: " + error.message);
-            }
+            } catch (error) { alert("Login Failed: " + error.message); }
         }
 
         window.addNewTemplate = async function() {
@@ -475,47 +424,33 @@
             const featuresRaw = document.getElementById('newFeatures').value;
             const galleryRaw = document.getElementById('newGallery').value;
 
-            if(!title || !price || !cover) {
-                alert("Please fill basic details!");
-                return;
-            }
+            if(!title || !price || !cover) { alert("Please fill basic details!"); return; }
 
             const newTemp = {
-                title: title,
-                price: price,
-                cover: cover,
+                title: title, price: price, cover: cover,
                 features: featuresRaw.split(','),
                 gallery: galleryRaw.split(',')
             };
 
             try {
                 await addDoc(templateCollection, newTemp);
-                alert("Website Added Successfully!");
+                alert("Website Added!");
                 document.getElementById('addModal').style.display = 'none';
-                
-                document.getElementById('newTitle').value = "";
-                document.getElementById('newPrice').value = "";
-                
                 fetchTemplates();
-            } catch(e) {
-                alert("Error: " + e.message);
-            }
+            } catch(e) { alert("Error: " + e.message); }
         }
 
         window.deleteTemplate = async function(id, event) {
             event.stopPropagation();
-            if(confirm("Are you sure you want to delete this website?")) {
+            if(confirm("Delete this website?")) {
                 try {
                     await deleteDoc(doc(db, "templates", id));
                     templates = templates.filter(t => t.id !== id);
                     window.renderTemplates();
-                } catch(e) {
-                    alert("Error deleting: " + e.message);
-                }
+                } catch(e) { alert("Error deleting: " + e.message); }
             }
         }
 
-        // Initialize
         fetchTemplates();
     </script>
 </body>

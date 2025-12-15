@@ -10,7 +10,6 @@
 
     <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -64,38 +63,23 @@
             align-items: center; 
             justify-content: space-between; 
             gap: 50px; 
-            /* FIXED: Removed min-height 100vh to reduce bottom space */
             min-height: auto; 
-            /* FIXED: Reduced Top/Bottom Padding */
             padding: 110px 10% 40px; 
             background: radial-gradient(circle at top right, #eff6ff 0%, #fff 40%);
         }
 
-        .home-content { 
-            flex: 1.2; 
-            max-width: 600px; 
-        }
-
+        .home-content { flex: 1.2; max-width: 600px; }
         .home-content h3 { font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 5px; }
         .home-content h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; margin: 10px 0 20px 0; color: #1e293b; letter-spacing: -1.5px; }
         .home-content p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; max-width: 550px; line-height: 1.6; }
         
-        .home-img { 
-            flex: 1; 
-            display: flex;
-            justify-content: flex-end; 
-            position: relative;
-        }
-
+        .home-img { flex: 1; display: flex; justify-content: flex-end; position: relative; }
         .home-img img {
-            width: 100%; 
-            max-width: 480px; 
-            height: auto;
+            width: 100%; max-width: 480px; height: auto;
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             box-shadow: 20px 20px 60px rgba(37, 99, 235, 0.15); 
             animation: float 6s ease-in-out infinite;
         }
-
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
         
         .btn { display: inline-block; padding: 0.9rem 2.2rem; background: var(--primary-blue); color: white; border-radius: 8px; text-decoration: none; transition: 0.3s; font-weight: 600; cursor: pointer; border: none; font-size: 1rem;}
@@ -113,6 +97,29 @@
         .tech-item:hover { color: var(--primary-blue); transform: scale(1.1); }
         .tech-item:hover span { color: var(--text-dark); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* --- FEATURED WEBSITES SECTION (New) --- */
+        .featured-section { padding: 80px 10%; background: #f8fafc; text-align: center; }
+        .featured-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+            margin-bottom: 40px;
+        }
+        .f-card {
+            background: white; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s;
+            border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column;
+        }
+        .f-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15); }
+        .f-img-box { height: 200px; width: 100%; overflow: hidden; position: relative; }
+        .f-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .f-card:hover .f-img { transform: scale(1.05); }
+        .f-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .f-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; color: var(--text-dark); }
+        .f-price { font-size: 1.1rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 15px; }
+        .f-footer { margin-top: auto; }
 
         /* Expertise Section */
         .expertise-section { padding: 80px 10%; text-align: center; background: #fff; }
@@ -133,33 +140,14 @@
 
         /* What I Can Build Section */
         .build-section { padding: 80px 10%; background: #f8fafc; }
-        .build-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-            margin-top: 50px; 
-        }
-        .build-card {
-            background: white; padding: 40px; border-radius: 20px;
-            border: 1px solid #e2e8f0; transition: 0.3s all ease;
-            display: flex; flex-direction: column; height: 100%;
-        }
-        .build-card:hover { 
-            transform: translateY(-10px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
-            border-color: var(--primary-blue); 
-        }
+        .build-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .build-card { background: white; padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; transition: 0.3s all ease; display: flex; flex-direction: column; height: 100%; }
+        .build-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--primary-blue); }
         .build-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; color: #0f172a; }
         .build-desc { color: #64748b; font-size: 1rem; margin-bottom: 25px; flex-grow: 1; line-height: 1.6; }
         .build-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
-        .build-tag { 
-            font-size: 0.75rem; background: #eff6ff; color: var(--primary-blue); 
-            padding: 6px 14px; border-radius: 50px; font-weight: 700; text-transform: uppercase;
-        }
-        .build-btn {
-            color: var(--text-dark); font-weight: 700; text-decoration: none; font-size: 0.95rem;
-            display: inline-flex; align-items: center; gap: 6px; transition: 0.3s;
-        }
+        .build-tag { font-size: 0.75rem; background: #eff6ff; color: var(--primary-blue); padding: 6px 14px; border-radius: 50px; font-weight: 700; text-transform: uppercase; }
+        .build-btn { color: var(--text-dark); font-weight: 700; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; }
         .build-btn:hover { gap: 10px; color: var(--primary-blue); }
 
         /* Workflow Section */
@@ -178,16 +166,6 @@
         .stat-item { padding: 10px; flex: 1; min-width: 150px; }
         .stat-num { font-size: 3.5rem; font-weight: 700; color: var(--primary-blue); display: block; margin-bottom: 5px; }
         .stat-label { font-size: 1.2rem; opacity: 0.7; font-weight: 500; }
-
-        /* Testimonials */
-        .testimonials-section { padding: 80px 10%; background: #fff; text-align: center; }
-        .testi-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 60px; }
-        .testi-card { background: #f8fafc; padding: 45px; border-radius: 20px; width: 380px; max-width: 100%; text-align: left; position: relative; transition: 0.3s; border: 1px solid #f1f5f9; }
-        .testi-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        .quote-icon { font-size: 2.5rem; color: #cbd5e1; position: absolute; top: 30px; right: 30px; }
-        .testi-text { font-size: 1.15rem; color: #334155; font-style: italic; margin-bottom: 30px; line-height: 1.7; }
-        .client-info { display: flex; align-items: center; gap: 15px; }
-        .client-img { width: 55px; height: 55px; border-radius: 50%; background: #ddd; object-fit: cover; }
 
         /* FAQ */
         .faq-section { padding: 80px 10%; background: #fff; max-width: 900px; margin: 0 auto; }
@@ -210,71 +188,33 @@
 
         /* Modal Base */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
-        
-        /* Login Modal Content */
         .login-content { background: white; padding: 40px 30px; border-radius: 16px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
         .login-content input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1rem; }
 
-        /* --- PORTFOLIO POPUP (Large) --- */
-        .portfolio-content {
-            background: white; padding: 40px; border-radius: 20px;
-            width: 90%; max-width: 1100px; height: 90vh;
-            overflow-y: auto; position: relative;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3); text-align: left;
-        }
-        .portfolio-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 20px;
-        }
-        .portfolio-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;
-        }
-        .portfolio-card {
-            background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
-            overflow: hidden; transition: 0.3s; position: relative;
-        }
+        /* --- PORTFOLIO POPUP --- */
+        .portfolio-content { background: white; padding: 40px; border-radius: 20px; width: 90%; max-width: 1100px; height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.3); text-align: left; }
+        .portfolio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .portfolio-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; transition: 0.3s; position: relative; }
         .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .portfolio-img { width: 100%; height: 200px; object-fit: cover; background: #f1f5f9; cursor: pointer; }
         .portfolio-info { padding: 20px; }
         .portfolio-info h4 { margin-bottom: 8px; font-size: 1.2rem; }
         .portfolio-info p { color: #64748b; font-size: 0.9rem; margin-bottom: 15px; height: 45px; overflow: hidden; }
-
         .close-btn { font-size: 2rem; cursor: pointer; color: #64748b; transition: 0.2s; }
         .close-btn:hover { color: #ef4444; }
+        .add-project-btn { display: none; background: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-bottom: 20px; }
+        .delete-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; }
+        
+        .admin-modal-content { background: white; padding: 30px; border-radius: 16px; width: 100%; max-width: 500px; text-align: left; }
+        .admin-modal-content input, .admin-modal-content textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; }
 
-        /* Admin Add Button in Portfolio */
-        .add-project-btn {
-            display: none; /* Hidden for users */
-            background: var(--primary-blue); color: white; border: none; padding: 10px 20px;
-            border-radius: 8px; cursor: pointer; font-weight: 600; margin-bottom: 20px;
-        }
-        .delete-btn {
-            position: absolute; top: 10px; right: 10px; background: red; color: white;
-            border: none; width: 30px; height: 30px; border-radius: 50%;
-            cursor: pointer; display: none; /* Hidden for users */
-            align-items: center; justify-content: center;
-        }
-
-        /* --- ADD PROJECT MODAL (Admin Only) --- */
-        .admin-modal-content {
-            background: white; padding: 30px; border-radius: 16px; width: 100%; max-width: 500px; text-align: left;
-        }
-        .admin-modal-content input, .admin-modal-content textarea {
-            width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit;
-        }
-
-        /* --- GALLERY MODAL (View Website) --- */
-        .gallery-content {
-            background: white; padding: 0; border-radius: 16px; width: 90%; max-width: 900px;
-            height: 85vh; display: flex; flex-direction: column; overflow: hidden;
-        }
+        .gallery-content { background: white; padding: 0; border-radius: 16px; width: 90%; max-width: 900px; height: 85vh; display: flex; flex-direction: column; overflow: hidden; }
         .gallery-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .gallery-body { flex: 1; overflow-y: auto; padding: 30px; background: #f8fafc; text-align: center; }
         .gallery-img { width: 100%; max-width: 800px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: block; margin-left: auto; margin-right: auto; }
         
-        /* =========================================
-           MOBILE RESPONSIVENESS (BREAKPOINTS)
-           ========================================= */
+        /* Mobile Responsiveness */
         @media (max-width: 1024px) {
             header { padding: 1rem 5%; }
             .home-container { padding: 100px 5% 40px; }
@@ -283,104 +223,36 @@
         }
 
         @media (max-width: 768px) {
-            /* Navbar Mobile Style */
             #menu-icon { display: block; z-index: 1001; }
-            
-            .navbar {
-                position: absolute;
-                top: 100%; left: 0;
-                width: 100%;
-                background: white;
-                border-top: 1px solid #f1f5f9;
-                flex-direction: column;
-                padding: 1rem 0 2rem;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-                display: none; /* Hidden by default */
-            }
+            .navbar { position: absolute; top: 100%; left: 0; width: 100%; background: white; border-top: 1px solid #f1f5f9; flex-direction: column; padding: 1rem 0 2rem; box-shadow: 0 10px 15px rgba(0,0,0,0.05); display: none; }
             .navbar.active { display: flex; animation: slideDown 0.3s ease; }
             @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
             .navbar a { margin: 15px 0; font-size: 1.2rem; display: block; }
-            .navbar button { margin: 15px 0 0 0 !important; font-size: 1.1rem; }
             .hire-btn { display: inline-block; width: 80%; text-align: center; margin-top: 10px; }
 
-            /* --- HERO SECTION MOBILE FIX (Tighter Padding) --- */
-            .home-container { 
-                flex-direction: row !important; 
-                align-items: center; 
-                justify-content: space-between; 
-                gap: 15px; 
-                /* FIXED: Reduced Top Padding */
-                padding-top: 85px; 
-                /* FIXED: Reduced Bottom Padding */
-                padding-bottom: 20px;
-                text-align: left;
-            }
+            .home-container { flex-direction: row !important; align-items: center; justify-content: space-between; gap: 15px; padding-top: 85px; padding-bottom: 20px; text-align: left; }
+            .home-content { flex: 1.5; }
+            .home-img { flex: 1; margin-bottom: 0; justify-content: center; display: flex; }
+            .home-img img { width: 100%; max-width: 150px; border-radius: 20px; box-shadow: 5px 5px 20px rgba(37, 99, 235, 0.1); }
             
-            .home-content { 
-                flex: 1.5; /* Text takes 60% width */
-            }
-            
-            .home-img { 
-                flex: 1; /* Image takes 40% width */
-                margin-bottom: 0; 
-                justify-content: center;
-                display: flex;
-            }
-            
-            .home-img img { 
-                width: 100%;
-                max-width: 150px; 
-                border-radius: 20px;
-                box-shadow: 5px 5px 20px rgba(37, 99, 235, 0.1); 
-            }
-            
-            /* Shrink Fonts for Mobile to fit in one line */
             .home-content h1 { font-size: 1.6rem; margin: 5px 0; line-height: 1.2; }
             .home-content h3 { font-size: 0.9rem; }
-            .home-content p { font-size: 0.8rem; margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-            
-            /* Button adjustments for mobile */
-            .home-content div { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+            .home-content p { font-size: 0.8rem; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
             .btn { padding: 8px 16px; font-size: 0.85rem; width: auto; }
             .contact-link { margin-left: 0; font-size: 0.9rem; }
 
-            /* Sections Mobile Fixes */
             .section-header h2 { font-size: 2.2rem; }
-            .srv-card { min-width: 100%; height: auto; min-height: 350px; }
-            
             .workflow-section { flex-direction: column; gap: 40px; text-align: center; }
             .workflow-text { text-align: left; }
-            .workflow-text h2 { font-size: 2.2rem; }
-            
             .stats-section { flex-direction: column; gap: 40px; }
-            .stat-num { font-size: 3rem; }
-
             .footer-bottom { flex-direction: column; text-align: center; }
-
-            /* --- PORTFOLIO POPUP MOBILE FIXES --- */
-            .portfolio-content {
-                padding: 20px;      /* Reduced padding */
-                width: 95%;         /* Wider on mobile */
-                height: 80vh;       /* Fit better */
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr; /* Single column */
-                gap: 20px;
-            }
-            .portfolio-header h2 {
-                font-size: 1.5rem;  /* Smaller title */
-            }
-            .close-btn {
-                font-size: 1.8rem;
-            }
+            
+            .portfolio-content { padding: 20px; width: 95%; height: 80vh; }
+            .portfolio-grid { grid-template-columns: 1fr; gap: 20px; }
         }
 
         @media (max-width: 480px) {
             .home-content h1 { font-size: 1.4rem; }
-            .testi-card { padding: 30px; }
-            .step { gap: 15px; }
-            .step-num { font-size: 2rem; }
         }
     </style>
 </head>
@@ -389,18 +261,13 @@
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">WebiFy.</a>
-        
-        <!-- Hamburger Menu Icon for Mobile -->
         <i class='bx bx-menu' id="menu-icon"></i>
-
         <nav class="navbar">
             <a href="index.html" class="active">Home</a>
             <a href="about.html">About</a>
             <a href="pricing.html">Pricing</a>
             <a href="contact.html">Contact</a>
-            
             <a href="hire.html" class="hire-btn">Hire Me</a>
-            <!-- Single Login Button for Everyone -->
             <button id="loginBtnLabel" onclick="window.openLogin()" style="margin-left: 20px; cursor: pointer; background: none; border: none; font-weight: 600; font-size:1rem;">Login</button>
         </nav>
     </header>
@@ -412,9 +279,7 @@
             <h1>Abhishek Sharma</h1>
             <h3>Professional <span class="auto-type"></span></h3>
             <p>I build high-performance websites and applications that help businesses scale. Specialized in React, Node.js, and Modern UI Design.</p>
-            
             <div>
-                <!-- Opens the Portfolio Popup -->
                 <button onclick="window.openPortfolio()" class="btn">View My Portfolio</button>
                 <a href="contact.html" class="contact-link">Contact Me <i class='bx bx-right-arrow-alt'></i></a>
             </div>
@@ -431,240 +296,137 @@
             <div class="marquee-content">
                 <div class="tech-item"><i class="fab fa-react"></i> <span>React</span></div>
                 <div class="tech-item"><i class="fab fa-node-js"></i> <span>Node.js</span></div>
-                <div class="tech-item"><i class="fab fa-python"></i> <span>Python</span></div>
                 <div class="tech-item"><i class="fab fa-js"></i> <span>JavaScript</span></div>
                 <div class="tech-item"><i class="fab fa-html5"></i> <span>HTML5</span></div>
                 <div class="tech-item"><i class="fab fa-css3-alt"></i> <span>CSS3</span></div>
-                <div class="tech-item"><i class="fab fa-aws"></i> <span>AWS</span></div>
                 <div class="tech-item"><i class="fab fa-figma"></i> <span>Figma</span></div>
-                <div class="tech-item"><i class="fab fa-docker"></i> <span>Docker</span></div>
                 <div class="tech-item"><i class="fab fa-react"></i> <span>React</span></div>
-                <div class="tech-item"><i class="fab fa-node-js"></i> <span>Node.js</span></div>
             </div>
         </div>
     </div>
+
+    <!-- NEW SECTION: Featured Ready-Made Websites -->
+    <section class="featured-section reveal">
+        <div class="section-header">
+            <h5 style="color: var(--primary-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Ready To Launch</h5>
+            <h2>Featured Websites</h2>
+            <p>Select from my premium collection of ready-made templates.</p>
+        </div>
+
+        <div class="featured-grid" id="homeTemplateGrid">
+            <!-- Items will be loaded here via JavaScript -->
+            <p style="text-align:center; width:100%;">Loading Templates...</p>
+        </div>
+
+        <a href="pricing.html" class="btn" style="background: var(--dark-teal);">View All Templates <i class='bx bx-right-arrow-alt'></i></a>
+    </section>
 
     <!-- Expertise Section -->
     <section id="services" class="expertise-section reveal">
         <div class="section-header">
             <h2>My Areas of Expertise</h2>
-            <p>From simple landing pages to complex enterprise web apps, I cover the entire spectrum of web development with precision.</p>
+            <p>From simple landing pages to complex enterprise web apps.</p>
         </div>
-        
         <div class="cards-container">
             <div class="srv-card card-dark">
-                <div>
-                    <h3>UI/UX Design</h3>
-                    <p>Crafting digital experiences that feel effortless. I design clean, modern and conversion-focused interfaces.</p>
-                </div>
-                <div style="margin-top: auto;">
-                    <i class='bx bxl-figma' style="font-size: 2.2rem;"></i>
-                    <i class='bx bxl-adobe' style="font-size: 2.2rem; margin-left: 10px;"></i>
-                </div>
+                <div><h3>UI/UX Design</h3><p>Crafting digital experiences that feel effortless.</p></div>
+                <div style="margin-top: auto;"><i class='bx bxl-figma' style="font-size: 2.2rem;"></i></div>
             </div>
             <div class="srv-card card-beige">
-                <div>
-                    <h3>Web Development</h3>
-                    <p>I build websites that don’t just look good — they perform. Lightning-fast, secure, and scalable.</p>
-                </div>
-                <div style="margin-top: auto; font-family: monospace; color: #d97706; font-size: 1.1rem;">
-                    &lt;Clean Code /&gt;
-                </div>
+                <div><h3>Web Development</h3><p>Lightning-fast, secure, and scalable websites.</p></div>
+                <div style="margin-top: auto; font-family: monospace; color: #d97706; font-size: 1.1rem;">&lt;Clean Code /&gt;</div>
             </div>
             <div class="srv-card card-light">
-                <div>
-                    <h3>SEO & Performance</h3>
-                    <p>Your website deserves visibility. From speed optimization to search-friendly architecture.</p>
-                </div>
-                <div style="margin-top: auto;">
-                    <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);">#1</span> Rank
-                </div>
+                <div><h3>SEO & Performance</h3><p>Your website deserves visibility.</p></div>
+                <div style="margin-top: auto;"><span style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);">#1</span> Rank</div>
             </div>
         </div>
     </section>
 
-    <!-- What I Can Build For You -->
+    <!-- Build Section -->
     <section class="build-section reveal">
         <div class="section-header" style="text-align: center;">
-            <h5 style="color: var(--primary-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Offerings</h5>
             <h2>What I Can Build For You</h2>
-            <p>Tailored web solutions designed to meet specific business needs with precision and style.</p>
         </div>
-
         <div class="build-grid">
             <div class="build-card">
                 <h3 class="build-title">Business Website</h3>
-                <p class="build-desc">Professional, clean and trustworthy websites designed for businesses. Built for speed and clarity.</p>
-                <div class="build-tags">
-                    <span class="build-tag">Corporate</span>
-                    <span class="build-tag">Clean</span>
-                    <span class="build-tag">Fast</span>
-                </div>
+                <p class="build-desc">Professional, clean and trustworthy websites designed for businesses.</p>
+                <div class="build-tags"><span class="build-tag">Corporate</span><span class="build-tag">Fast</span></div>
                 <a href="contact.html" class="build-btn">Start Project <i class='bx bx-right-arrow-alt'></i></a>
             </div>
-
             <div class="build-card">
                 <h3 class="build-title">Personal Portfolio</h3>
-                <p class="build-desc">A stylish and modern portfolio layout to showcase skills, achievements and personality.</p>
-                <div class="build-tags">
-                    <span class="build-tag">Creative</span>
-                    <span class="build-tag">Minimal</span>
-                    <span class="build-tag">Bio</span>
-                </div>
+                <p class="build-desc">A stylish and modern portfolio layout to showcase skills.</p>
+                <div class="build-tags"><span class="build-tag">Creative</span><span class="build-tag">Bio</span></div>
                 <a href="contact.html" class="build-btn">Start Project <i class='bx bx-right-arrow-alt'></i></a>
             </div>
-
             <div class="build-card">
                 <h3 class="build-title">E-commerce Layout</h3>
-                <p class="build-desc">Clean product layouts with smooth browsing and user-friendly shopping experience.</p>
-                <div class="build-tags">
-                    <span class="build-tag">Shop</span>
-                    <span class="build-tag">Cart</span>
-                    <span class="build-tag">Secure</span>
-                </div>
+                <p class="build-desc">Clean product layouts with smooth browsing.</p>
+                <div class="build-tags"><span class="build-tag">Shop</span><span class="build-tag">Secure</span></div>
                 <a href="contact.html" class="build-btn">Start Project <i class='bx bx-right-arrow-alt'></i></a>
             </div>
         </div>
     </section>
-
-    <!-- Stats Counter -->
-    <div class="stats-section reveal">
-        <div class="stat-item">
-            <span class="stat-num">2+</span>
-            <span class="stat-label">Years Experience</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-num">40+</span>
-            <span class="stat-label">Projects Completed</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-num">30+</span>
-            <span class="stat-label">Happy Clients</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Job Success</span>
-        </div>
-    </div>
 
     <!-- Workflow Section -->
     <section class="workflow-section reveal">
         <div class="workflow-text">
             <h2>How I Work: <br>The Process</h2>
-            <div class="step">
-                <span class="step-num">01</span>
-                <div>
-                    <h4>Understand & Plan</h4>
-                    <p>I first understand your goals, requirements, and design preferences, then create a clear plan for your website.</p>
-                </div>
-            </div>
-            <div class="step">
-                <span class="step-num">02</span>
-                <div>
-                    <h4>Design & Develop</h4>
-                    <p>I design a modern, responsive layout and build a fast, secure, and SEO-friendly website tailored to your needs.</p>
-                </div>
-            </div>
-            <div class="step">
-                <span class="step-num">03</span>
-                <div>
-                    <h4>Review & Launch</h4>
-                    <p>You review the website, revisions are done if needed, and then I launch it with full support and guidance.</p>
-                </div>
-            </div>
+            <div class="step"><span class="step-num">01</span><div><h4>Understand & Plan</h4><p>I create a clear plan for your website.</p></div></div>
+            <div class="step"><span class="step-num">02</span><div><h4>Design & Develop</h4><p>I build a fast, secure, and SEO-friendly website.</p></div></div>
+            <div class="step"><span class="step-num">03</span><div><h4>Review & Launch</h4><p>I launch it with full support and guidance.</p></div></div>
         </div>
         <div class="workflow-img">
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Team working">
         </div>
     </section>
 
+    <!-- Stats -->
+    <div class="stats-section reveal">
+        <div class="stat-item"><span class="stat-num">2+</span><span class="stat-label">Years Experience</span></div>
+        <div class="stat-item"><span class="stat-num">40+</span><span class="stat-label">Projects Completed</span></div>
+        <div class="stat-item"><span class="stat-num">30+</span><span class="stat-label">Happy Clients</span></div>
+    </div>
+
     <!-- FAQ -->
     <section class="faq-section reveal">
-        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-            <h2>Frequently Asked Questions</h2>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-            <div class="faq-question">How much does a website cost? <i class='bx bx-chevron-down'></i></div>
-            <div class="faq-answer">The cost depends on the complexity and features. A basic site starts at ₹499.</div>
-        </div>
-        <div class="faq-item" onclick="this.classList.toggle('active')">
-            <div class="faq-question">How long does it take to build? <i class='bx bx-chevron-down'></i></div>
-            <div class="faq-answer">A standard business website typically takes 2-4 weeks.</div>
-        </div>
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-question">How much does a website cost? <i class='bx bx-chevron-down'></i></div><div class="faq-answer">The cost depends on the complexity. A basic site starts at ₹499.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-question">How long does it take? <i class='bx bx-chevron-down'></i></div><div class="faq-answer">Typically 2-4 weeks.</div></div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
-            <div class="footer-col">
-                <div class="logo" style="color: white; margin-bottom: 20px;">WebiFy.</div>
-                <p style="opacity: 0.7;">Empowering businesses with cutting-edge web solutions.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#projects">Portfolio</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="mailto:as90241074@gmail.com">as90241074@gmail.com</a></li>
-                    <li>+91-9376917149</a></li>
-                    <li style="font-size: 1.5rem; margin-top: 15px;">
-                        <i class='bx bxl-linkedin-square' style="margin-right: 10px; cursor: pointer;"></i>
-                        <i class='bx bxl-github' style="margin-right: 10px; cursor: pointer;"></i>
-                    </li>
-                </ul>
-            </div>
+            <div class="footer-col"><div class="logo" style="color: white; margin-bottom: 20px;">WebiFy.</div><p style="opacity: 0.7;">Empowering businesses with cutting-edge web solutions.</p></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#">Home</a></li><li><a href="#projects">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:as90241074@gmail.com">as90241074@gmail.com</a></li><li>+91-9376917149</a></li></ul></div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Abhishek Sharma. All rights reserved.</p>
-            <p>Made with <i class='bx bxs-heart' style="color: #f43f5e;"></i> in India</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2025 Abhishek Sharma. All rights reserved.</p></div>
     </footer>
 
-    <!-- 1. LOGIN MODAL (Common for User & Admin) -->
+    <!-- MODALS -->
     <div class="modal" id="loginModal">
         <div class="login-content">
             <h3 style="margin-bottom: 20px; font-weight: 700;">Account Login</h3>
-            <p style="font-size:0.9rem; color:#64748b; margin-bottom:15px;">Enter details to access.</p>
             <input type="email" id="email" placeholder="Email Address">
             <input type="password" id="password" placeholder="Password">
-            
             <button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.handleLogin()">Login</button>
             <button class="btn" style="width: 100%; margin-top: 10px; background: #4f46e5;" onclick="window.handleSignUp()">Create Account</button>
-            
             <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top: 15px; background: none; border: none; cursor: pointer; color: #94a3b8;">Cancel</button>
         </div>
     </div>
 
-    <!-- 2. PORTFOLIO MODAL (Displays Projects) -->
     <div class="modal" id="portfolioModal">
         <div class="portfolio-content">
-            <div class="portfolio-header">
-                <div>
-                    <h2 style="font-weight: 800; color: var(--primary-blue);">My Portfolio</h2>
-                    <p style="color: #64748b;">A collection of my best work.</p>
-                </div>
-                <i class='bx bx-x close-btn' onclick="window.closePortfolio()"></i>
-            </div>
-
-            <!-- Admin Add Button (Only visible if Admin Logged In) -->
-            <button id="adminAddBtn" class="add-project-btn" onclick="window.openAddModal()">
-                <i class='bx bx-plus'></i> Add New Project
-            </button>
-
-            <!-- Projects Grid -->
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- JavaScript will load items here -->
-            </div>
+            <div class="portfolio-header"><div><h2 style="font-weight: 800; color: var(--primary-blue);">My Portfolio</h2></div><i class='bx bx-x close-btn' onclick="window.closePortfolio()"></i></div>
+            <button id="adminAddBtn" class="add-project-btn" onclick="window.openAddModal()"><i class='bx bx-plus'></i> Add New Project</button>
+            <div class="portfolio-grid" id="portfolioGrid"></div>
         </div>
     </div>
 
-    <!-- 3. ADD PROJECT MODAL (Admin Only) -->
     <div class="modal" id="addProjectModal">
         <div class="admin-modal-content">
             <h3 style="margin-bottom: 20px;">Add New Project</h3>
@@ -672,42 +434,25 @@
             <textarea id="newDesc" rows="3" placeholder="Project Description"></textarea>
             <input type="text" id="newLink" placeholder="Website Live URL">
             <textarea id="newImages" rows="3" placeholder="Image URLs (Separated by comma or new line)"></textarea>
-            <p style="font-size: 0.8rem; color: #64748b;">* Paste image links. First one will be the cover.</p>
-            
-            <div style="margin-top: 20px; text-align: right;">
-                <button onclick="document.getElementById('addProjectModal').style.display='none'" style="margin-right: 10px; border: none; background: none; cursor: pointer;">Cancel</button>
-                <button class="btn" onclick="window.saveProject()">Save Project</button>
-            </div>
+            <div style="margin-top: 20px; text-align: right;"><button onclick="document.getElementById('addProjectModal').style.display='none'" style="margin-right: 10px; border: none; background: none; cursor: pointer;">Cancel</button><button class="btn" onclick="window.saveProject()">Save Project</button></div>
         </div>
     </div>
 
-    <!-- 4. GALLERY MODAL (View Project Details & All Photos) -->
     <div class="modal" id="galleryModal">
         <div class="gallery-content">
-            <div class="gallery-header">
-                <h3 id="galleryTitle">Project Title</h3>
-                <i class='bx bx-x close-btn' onclick="document.getElementById('galleryModal').style.display='none'"></i>
-            </div>
-            <div class="gallery-body" id="galleryBody">
-                <!-- Images will load here -->
-            </div>
-            <div style="padding: 20px; background: white; border-top: 1px solid #eee; text-align: center;">
-                <p id="galleryDesc" style="color: #64748b; margin-bottom: 15px;">Description goes here...</p>
-                <a id="galleryLink" href="#" target="_blank" class="btn">Visit Live Website</a>
-            </div>
+            <div class="gallery-header"><h3 id="galleryTitle">Project Title</h3><i class='bx bx-x close-btn' onclick="document.getElementById('galleryModal').style.display='none'"></i></div>
+            <div class="gallery-body" id="galleryBody"></div>
+            <div style="padding: 20px; background: white; border-top: 1px solid #eee; text-align: center;"><p id="galleryDesc" style="color: #64748b; margin-bottom: 15px;">Description goes here...</p><a id="galleryLink" href="#" target="_blank" class="btn">Visit Live Website</a></div>
         </div>
     </div>
     
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-    <!-- FIREBASE AND APP LOGIC -->
     <script type="module">
-        // --- FIREBASE IMPORTS ---
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, limit, query } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
-        // --- ⚠️ CONFIGURATION: Provided by user ---
         const firebaseConfig = {
           apiKey: "AIzaSyDAjm5p9EJueq3eMq7WY9u7cT5GDppedaY",
           authDomain: "devstudio-36b8e.firebaseapp.com",
@@ -718,17 +463,55 @@
           measurementId: "G-0FSZ1500XG"
         };
 
-        // --- INITIALIZE FIREBASE ---
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const portfolioCollection = collection(db, "portfolio");
+        const templatesCollection = collection(db, "templates"); // For Home page data
 
-        // --- LOCAL STATE ---
         let projects = [];
         let isAdmin = false;
 
-        // --- FETCH DATA FROM FIRESTORE ---
+        // --- FETCH HOME PAGE TEMPLATES (Limit 3) ---
+        async function fetchHomeTemplates() {
+            try {
+                // Get documents (ideally limited, but client side limit works for now)
+                const querySnapshot = await getDocs(templatesCollection);
+                let count = 0;
+                const grid = document.getElementById('homeTemplateGrid');
+                grid.innerHTML = "";
+
+                querySnapshot.forEach((doc) => {
+                    if (count < 3) {
+                        const data = doc.data();
+                        const card = document.createElement('div');
+                        card.className = 'f-card';
+                        card.innerHTML = `
+                            <div class="f-img-box">
+                                <img src="${data.cover}" alt="${data.title}" class="f-img">
+                            </div>
+                            <div class="f-content">
+                                <h3 class="f-title">${data.title}</h3>
+                                <div class="f-price">${data.price}</div>
+                                <div class="f-footer">
+                                    <a href="pricing.html" style="color:var(--primary-blue); font-weight:600; text-decoration:none;">View Details &rarr;</a>
+                                </div>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                        count++;
+                    }
+                });
+
+                if(count === 0) {
+                    grid.innerHTML = "<p>No templates available right now.</p>";
+                }
+            } catch (error) {
+                console.error("Error fetching home templates:", error);
+            }
+        }
+
+        // --- PORTFOLIO LOGIC ---
         async function fetchProjects() {
             try {
                 const querySnapshot = await getDocs(portfolioCollection);
@@ -736,77 +519,45 @@
                 querySnapshot.forEach((doc) => {
                     projects.push({ id: doc.id, ...doc.data() });
                 });
-                // Sort by date if available
                 projects.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
                 window.renderProjects();
-            } catch (error) {
-                console.error("Error getting projects:", error);
-            }
+            } catch (error) { console.error("Error:", error); }
         }
 
-        // --- GLOBAL FUNCTIONS (Attached to window) ---
+        window.openLogin = function() { document.getElementById('loginModal').style.display = 'flex'; }
 
-        window.openLogin = function() { 
-            document.getElementById('loginModal').style.display = 'flex'; 
-        }
-
-        // LOGIN FUNCTION
         window.handleLogin = async function() {
             const email = document.getElementById('email').value;
             const pass = document.getElementById('password').value;
-
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, pass);
-                const user = userCredential.user;
-                
-                // Check if admin
-                if (user.email === "superman@sharmaji.com") {
+                if (userCredential.user.email === "superman@sharmaji.com") {
                     isAdmin = true;
-                    alert("Admin Logged In Successfully!");
-                    document.getElementById('loginBtnLabel').innerText = "Admin";
+                    alert("Admin Logged In!");
                 } else {
-                    isAdmin = false;
-                    alert("Logged in Successfully!");
-                    document.getElementById('loginBtnLabel').innerText = "Account";
+                    alert("Logged in!");
                 }
-                
                 document.getElementById('loginModal').style.display = 'none';
-                
-                // Refresh buttons
                 const addBtn = document.getElementById('adminAddBtn');
                 if(addBtn) addBtn.style.display = isAdmin ? "inline-block" : "none";
                 window.renderProjects(); 
-
-            } catch (error) {
-                alert("Login Failed: " + error.message);
-            }
+            } catch (error) { alert("Login Failed: " + error.message); }
         }
 
-        // SIGN UP FUNCTION (Create Account)
         window.handleSignUp = async function() {
             const email = document.getElementById('email').value;
             const pass = document.getElementById('password').value;
-
-            if(pass.length < 6) {
-                alert("Password should be at least 6 characters.");
-                return;
-            }
-
+            if(pass.length < 6) { alert("Password min 6 chars."); return; }
             try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-                alert("Account Created Successfully! You are now logged in.");
-                document.getElementById('loginBtnLabel').innerText = "Account";
+                await createUserWithEmailAndPassword(auth, email, pass);
+                alert("Account Created!");
                 document.getElementById('loginModal').style.display = 'none';
-            } catch (error) {
-                alert("Error Creating Account: " + error.message);
-            }
+            } catch (error) { alert("Error: " + error.message); }
         }
 
         window.openPortfolio = function() { 
             document.getElementById('portfolioModal').style.display = 'flex'; 
-            if(projects.length === 0) fetchProjects();
-            else window.renderProjects();
-            
+            if(projects.length === 0) fetchProjects(); else window.renderProjects();
             const addBtn = document.getElementById('adminAddBtn');
             addBtn.style.display = isAdmin ? "inline-block" : "none";
         }
@@ -816,23 +567,12 @@
         window.renderProjects = function() {
             const grid = document.getElementById('portfolioGrid');
             grid.innerHTML = ""; 
-
             projects.forEach(proj => {
                 let card = document.createElement('div');
                 card.className = 'portfolio-card';
-                
                 let deleteHtml = isAdmin ? `<button class="delete-btn" style="display:flex;" onclick="window.deleteProject('${proj.id}', event)"><i class='bx bx-trash'></i></button>` : '';
                 let coverImage = (proj.images && proj.images.length > 0) ? proj.images[0] : 'https://via.placeholder.com/300';
-
-                card.innerHTML = `
-                    ${deleteHtml}
-                    <img src="${coverImage}" class="portfolio-img" onclick="window.openGallery('${proj.id}')">
-                    <div class="portfolio-info">
-                        <h4>${proj.title}</h4>
-                        <p>${proj.desc}</p>
-                        <button onclick="window.openGallery('${proj.id}')" style="background:none; border:none; color:var(--primary-blue); font-weight:600; cursor:pointer;">View Website &rarr;</button>
-                    </div>
-                `;
+                card.innerHTML = `${deleteHtml}<img src="${coverImage}" class="portfolio-img" onclick="window.openGallery('${proj.id}')"><div class="portfolio-info"><h4>${proj.title}</h4><p>${proj.desc}</p><button onclick="window.openGallery('${proj.id}')" style="background:none; border:none; color:var(--primary-blue); font-weight:600; cursor:pointer;">View Website &rarr;</button></div>`;
                 grid.appendChild(card);
             });
         }
@@ -844,33 +584,16 @@
             const desc = document.getElementById('newDesc').value;
             const link = document.getElementById('newLink').value;
             const rawImages = document.getElementById('newImages').value;
-
             const images = rawImages.split(/[\n,]+/).map(url => url.trim()).filter(url => url !== "");
 
             if (title && images.length > 0) {
-                const newProj = {
-                    title: title,
-                    desc: desc,
-                    link: link,
-                    images: images,
-                    createdAt: new Date()
-                };
-
                 try {
-                    await addDoc(portfolioCollection, newProj);
+                    await addDoc(portfolioCollection, { title, desc, link, images, createdAt: new Date() });
                     alert("Project Uploaded!");
                     document.getElementById('addProjectModal').style.display = 'none';
-                    document.getElementById('newTitle').value = "";
-                    document.getElementById('newDesc').value = "";
-                    document.getElementById('newLink').value = "";
-                    document.getElementById('newImages').value = "";
                     fetchProjects();
-                } catch(e) {
-                    alert("Error saving: " + e.message);
-                }
-            } else {
-                alert("Please add Title and Image.");
-            }
+                } catch(e) { alert("Error: " + e.message); }
+            } else { alert("Please add Title and Image."); }
         }
 
         window.deleteProject = async function(id, event) {
@@ -880,9 +603,7 @@
                     await deleteDoc(doc(db, "portfolio", id));
                     projects = projects.filter(p => p.id !== id);
                     window.renderProjects();
-                } catch(e) {
-                    alert("Error deleting: " + e.message);
-                }
+                } catch(e) { alert("Error: " + e.message); }
             }
         }
 
@@ -897,76 +618,41 @@
             if(proj.images) {
                 proj.images.forEach(imgUrl => {
                     let img = document.createElement('img');
-                    img.src = imgUrl;
-                    img.className = 'gallery-img';
-                    body.appendChild(img);
+                    img.src = imgUrl; img.className = 'gallery-img'; body.appendChild(img);
                 });
             }
             document.getElementById('galleryModal').style.display = 'flex';
         }
 
-        // --- UTILS ---
         window.onclick = function(event) {
             const modals = ['loginModal', 'portfolioModal', 'addProjectModal', 'galleryModal'];
-            modals.forEach(id => {
-                if (event.target == document.getElementById(id)) {
-                    document.getElementById(id).style.display = "none";
-                }
-            });
+            modals.forEach(id => { if (event.target == document.getElementById(id)) document.getElementById(id).style.display = "none"; });
         }
 
         let menuIcon = document.querySelector('#menu-icon');
         let navbar = document.querySelector('.navbar');
-
-        menuIcon.onclick = () => {
-            menuIcon.classList.toggle('bx-x'); 
-            navbar.classList.toggle('active');
-        };
-
-        window.onscroll = () => {
-            menuIcon.classList.remove('bx-x');
-            navbar.classList.remove('active');
-            reveal(); 
-        };
+        menuIcon.onclick = () => { menuIcon.classList.toggle('bx-x'); navbar.classList.toggle('active'); };
+        window.onscroll = () => { menuIcon.classList.remove('bx-x'); navbar.classList.remove('active'); reveal(); };
 
         function reveal() {
             var reveals = document.querySelectorAll('.reveal');
             for (var i = 0; i < reveals.length; i++) {
-                var windowheight = window.innerHeight;
-                var revealtop = reveals[i].getBoundingClientRect().top;
-                var revealpoint = 150;
-                if (revealtop < windowheight - revealpoint) {
-                    reveals[i].classList.add('active');
-                }
+                if (reveals[i].getBoundingClientRect().top < window.innerHeight - 150) reveals[i].classList.add('active');
             }
         }
         reveal();
 
-        var typed = new Typed(".auto-type", {
-            strings: ["Full Stack Developer", "Web Developer", "UI/UX Designer", "Freelancer"],
-            typeSpeed: 100,
-            backSpeed: 60,
-            loop: true
-        });
+        new Typed(".auto-type", { strings: ["Full Stack Developer", "Web Developer", "UI/UX Designer"], typeSpeed: 100, backSpeed: 60, loop: true });
 
+        // Load Home Data
+        fetchHomeTemplates();
         fetchProjects();
 
-        // Check Auth Status on Load (Persistence)
-        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
         onAuthStateChanged(auth, (user) => {
-            if (user && user.email === "superman@sharmaji.com") {
-                isAdmin = true;
-                document.getElementById('loginBtnLabel').innerText = "Admin";
-            } else if (user) {
-                isAdmin = false;
-                document.getElementById('loginBtnLabel').innerText = "Account";
-            } else {
-                isAdmin = false;
-                document.getElementById('loginBtnLabel').innerText = "Login";
-            }
+            if (user && user.email === "superman@sharmaji.com") { isAdmin = true; document.getElementById('loginBtnLabel').innerText = "Admin"; }
+            else if (user) { isAdmin = false; document.getElementById('loginBtnLabel').innerText = "Account"; }
+            else { isAdmin = false; document.getElementById('loginBtnLabel').innerText = "Login"; }
         });
-
     </script>
-
 </body>
 </html>
