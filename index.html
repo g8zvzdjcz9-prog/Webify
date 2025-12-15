@@ -37,7 +37,7 @@
 
         /* Header */
         header {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 1rem 10%;
+            position: fixed; top: 0; left: 0; width: 100%; padding: 0.8rem 10%;
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
             display: flex; justify-content: space-between; align-items: center; 
             z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -52,38 +52,59 @@
         }
         .navbar a:hover, .navbar a.active { color: var(--primary-blue); }
         
-        .hire-btn { background: var(--primary-blue); color: white !important; padding: 12px 28px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); transition: 0.3s; }
+        .hire-btn { background: var(--primary-blue); color: white !important; padding: 10px 24px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); transition: 0.3s; }
         .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
 
         /* Hamburger Menu Icon (Hidden on Desktop) */
         #menu-icon { font-size: 2.5rem; color: var(--text-dark); display: none; cursor: pointer; }
 
-        /* Hero Section */
+        /* --- HERO SECTION --- */
         .home-container {
-            display: flex; align-items: center; justify-content: space-between;
-            min-height: 100vh; padding: 120px 10% 50px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            gap: 50px; 
+            /* FIXED: Removed min-height 100vh to reduce bottom space */
+            min-height: auto; 
+            /* FIXED: Reduced Top/Bottom Padding */
+            padding: 110px 10% 40px; 
             background: radial-gradient(circle at top right, #eff6ff 0%, #fff 40%);
         }
-        .home-content { max-width: 600px; }
-        .home-content h1 { font-size: 4.2rem; font-weight: 800; line-height: 1.1; margin: 20px 0; color: #1e293b; letter-spacing: -1px; }
-        
-        .home-content h3 { font-size: 1.5rem; font-weight: 600; }
-        .home-content span { color: var(--primary-blue); } 
-        
-        .home-content p { font-size: 1.25rem; color: var(--text-gray); margin-bottom: 35px; max-width: 600px; }
-        .home-img { text-align: center; }
-        .home-img img {
-            width: 450px; max-width: 100%; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            box-shadow: 20px 20px 60px rgba(37, 99, 235, 0.15); animation: float 6s ease-in-out infinite;
+
+        .home-content { 
+            flex: 1.2; 
+            max-width: 600px; 
         }
+
+        .home-content h3 { font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 5px; }
+        .home-content h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; margin: 10px 0 20px 0; color: #1e293b; letter-spacing: -1.5px; }
+        .home-content p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; max-width: 550px; line-height: 1.6; }
+        
+        .home-img { 
+            flex: 1; 
+            display: flex;
+            justify-content: flex-end; 
+            position: relative;
+        }
+
+        .home-img img {
+            width: 100%; 
+            max-width: 480px; 
+            height: auto;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 20px 20px 60px rgba(37, 99, 235, 0.15); 
+            animation: float 6s ease-in-out infinite;
+        }
+
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
         
-        .btn { display: inline-block; padding: 1rem 2.5rem; background: var(--primary-blue); color: white; border-radius: 8px; text-decoration: none; transition: 0.3s; font-weight: 600; cursor: pointer; border: none; font-size: 1rem;}
+        .btn { display: inline-block; padding: 0.9rem 2.2rem; background: var(--primary-blue); color: white; border-radius: 8px; text-decoration: none; transition: 0.3s; font-weight: 600; cursor: pointer; border: none; font-size: 1rem;}
         .btn:hover { background: #1d4ed8; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25); }
-        .contact-link { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+        .contact-link { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 700; display: inline-flex; align-items: center; gap: 5px; font-size: 1rem; }
+        .contact-link:hover { color: var(--primary-blue); gap: 10px; transition: 0.3s; }
 
         /* Tech Stack Marquee */
-        .tech-stack { padding: 50px 0; background: white; border-bottom: 1px solid #f1f5f9; overflow: hidden; }
+        .tech-stack { padding: 40px 0; background: white; border-bottom: 1px solid #f1f5f9; overflow: hidden; }
         .tech-title { text-align: center; font-size: 0.85rem; color: #94a3b8; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
         .marquee-wrapper { display: flex; width: 100%; overflow: hidden; }
         .marquee-content { display: flex; gap: 60px; animation: scroll 25s linear infinite; padding-left: 50px; }
@@ -94,7 +115,7 @@
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
         /* Expertise Section */
-        .expertise-section { padding: 100px 10%; text-align: center; background: #fff; }
+        .expertise-section { padding: 80px 10%; text-align: center; background: #fff; }
         .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; font-family: 'Gabarito', sans-serif; color: #0f172a; }
         .section-header p { margin-bottom: 70px; color: var(--text-gray); max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
         
@@ -111,7 +132,7 @@
         .card-light { background-color: var(--light-gray); color: #1f2937; border: 1px solid #e2e8f0; }
 
         /* What I Can Build Section */
-        .build-section { padding: 100px 10%; background: #f8fafc; }
+        .build-section { padding: 80px 10%; background: #f8fafc; }
         .build-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -142,7 +163,7 @@
         .build-btn:hover { gap: 10px; color: var(--primary-blue); }
 
         /* Workflow Section */
-        .workflow-section { display: flex; align-items: center; background: #fff; padding: 100px 10%; gap: 80px; }
+        .workflow-section { display: flex; align-items: center; background: #fff; padding: 80px 10%; gap: 80px; }
         .workflow-text { flex: 1; }
         .workflow-text h2 { font-size: 3rem; line-height: 1.2; margin-bottom: 30px; font-weight: 700; }
         .step { display: flex; gap: 25px; margin-bottom: 40px; }
@@ -159,7 +180,7 @@
         .stat-label { font-size: 1.2rem; opacity: 0.7; font-weight: 500; }
 
         /* Testimonials */
-        .testimonials-section { padding: 100px 10%; background: #fff; text-align: center; }
+        .testimonials-section { padding: 80px 10%; background: #fff; text-align: center; }
         .testi-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 60px; }
         .testi-card { background: #f8fafc; padding: 45px; border-radius: 20px; width: 380px; max-width: 100%; text-align: left; position: relative; transition: 0.3s; border: 1px solid #f1f5f9; }
         .testi-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
@@ -256,7 +277,7 @@
            ========================================= */
         @media (max-width: 1024px) {
             header { padding: 1rem 5%; }
-            .home-container { padding: 120px 5% 50px; }
+            .home-container { padding: 100px 5% 40px; }
             .expertise-section, .build-section, .portfolio-section, .workflow-section, .stats-section, .testimonials-section, .faq-section, footer { padding: 80px 5%; }
             .home-content h1 { font-size: 3.5rem; }
         }
@@ -283,16 +304,46 @@
             .navbar button { margin: 15px 0 0 0 !important; font-size: 1.1rem; }
             .hire-btn { display: inline-block; width: 80%; text-align: center; margin-top: 10px; }
 
-            /* Hero Section Mobile */
-            .home-container { flex-direction: column-reverse; text-align: center; padding-top: 100px; justify-content: center; }
-            .home-img { margin-bottom: 40px; width: 100%; display: flex; justify-content: center; }
-            .home-img img { width: 280px; box-shadow: 10px 10px 40px rgba(37, 99, 235, 0.1); }
+            /* --- HERO SECTION MOBILE FIX (Tighter Padding) --- */
+            .home-container { 
+                flex-direction: row !important; 
+                align-items: center; 
+                justify-content: space-between; 
+                gap: 15px; 
+                /* FIXED: Reduced Top Padding */
+                padding-top: 85px; 
+                /* FIXED: Reduced Bottom Padding */
+                padding-bottom: 20px;
+                text-align: left;
+            }
             
-            .home-content h1 { font-size: 2.5rem; margin: 15px 0; }
-            .home-content p { font-size: 1rem; margin-bottom: 25px; }
+            .home-content { 
+                flex: 1.5; /* Text takes 60% width */
+            }
             
-            .home-content div { display: flex; flex-direction: column; gap: 15px; align-items: center; }
-            .contact-link { margin-left: 0; margin-top: 5px; }
+            .home-img { 
+                flex: 1; /* Image takes 40% width */
+                margin-bottom: 0; 
+                justify-content: center;
+                display: flex;
+            }
+            
+            .home-img img { 
+                width: 100%;
+                max-width: 150px; 
+                border-radius: 20px;
+                box-shadow: 5px 5px 20px rgba(37, 99, 235, 0.1); 
+            }
+            
+            /* Shrink Fonts for Mobile to fit in one line */
+            .home-content h1 { font-size: 1.6rem; margin: 5px 0; line-height: 1.2; }
+            .home-content h3 { font-size: 0.9rem; }
+            .home-content p { font-size: 0.8rem; margin-bottom: 15px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+            
+            /* Button adjustments for mobile */
+            .home-content div { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+            .btn { padding: 8px 16px; font-size: 0.85rem; width: auto; }
+            .contact-link { margin-left: 0; font-size: 0.9rem; }
 
             /* Sections Mobile Fixes */
             .section-header h2 { font-size: 2.2rem; }
@@ -326,8 +377,7 @@
         }
 
         @media (max-width: 480px) {
-            .home-content h1 { font-size: 2.2rem; }
-            .btn { width: 100%; text-align: center; }
+            .home-content h1 { font-size: 1.4rem; }
             .testi-card { padding: 30px; }
             .step { gap: 15px; }
             .step-num { font-size: 2rem; }
@@ -358,7 +408,7 @@
     <!-- Hero Section -->
     <section class="home-container reveal">
         <div class="home-content">
-            <h3 style="font-weight: 600; color: var(--primary-blue);">Hello, I am</h3>
+            <h3 style="font-weight: 600;">Hello, I am</h3>
             <h1>Abhishek Sharma</h1>
             <h3>Professional <span class="auto-type"></span></h3>
             <p>I build high-performance websites and applications that help businesses scale. Specialized in React, Node.js, and Modern UI Design.</p>
