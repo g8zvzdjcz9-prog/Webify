@@ -3,174 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing & Template Store - Web Design</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Store & Pricing - Webify</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        :root { --primary: #4f46e5; --secondary: #0f172a; --bg-light: #f8fafc; --white: #ffffff; --text-gray: #64748b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg-light); color: var(--secondary); line-height: 1.6; }
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --primary: #2563eb;       /* Royal Blue */
+            --dark: #0f172a;          /* Slate Dark */
+            --bg-light: #f8fafc;      /* Background */
+            --white: #ffffff;
+            --text-gray: #64748b;
+            --success: #16a34a;       /* Green */
+            --gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
 
-        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: fixed; top: 0; width: 100%; padding: 1rem 10%; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
-        .logo { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a { margin-left: 25px; text-decoration: none; color: var(--secondary); font-weight: 500; transition: 0.3s; }
-        .hire-btn { background: var(--primary); color: white !important; padding: 10px 25px; border-radius: 50px; }
-        #menu-icon { display: none; font-size: 1.8rem; color: var(--secondary); cursor: pointer; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-light); color: var(--dark); line-height: 1.6; }
 
-        .hero { padding: 140px 10% 80px; text-align: center; background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%); }
-        .hero h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 700; margin-bottom: 15px; }
-        .badge { background: #dbeafe; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: 600; display: inline-block; margin-bottom: 15px; }
-
-        .pricing-section { padding: 50px 10%; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .price-card { background: var(--white); border-radius: 16px; padding: 40px 30px; border: 1px solid #e2e8f0; position: relative; transition: transform 0.3s ease; display: flex; flex-direction: column; }
-        .price-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .plan-price { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
-        .features-list { list-style: none; margin-bottom: 30px; flex-grow: 1; }
-        .features-list li { margin-bottom: 12px; color: var(--text-gray); display: flex; align-items: center; gap: 10px; }
-        .btn-full { display: block; width: 100%; padding: 14px; text-align: center; background: var(--secondary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; }
-        .price-card.popular { border: 2px solid var(--primary); transform: scale(1.05); }
-
-        /* --- TEMPLATE CATALOG (Desktop) --- */
-        .catalog-section { padding: 80px 10%; background: #ffffff; }
-        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); gap: 30px; }
-        .template-card { background: white; border: 1px solid #f1f5f9; border-radius: 16px; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; position: relative; }
-        .t-image-container { position: relative; height: 240px; background: #eee; overflow: hidden; cursor: pointer; }
-        .t-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .t-price-tag { position: absolute; bottom: 10px; right: 10px; background: rgba(15, 23, 42, 0.9); color: white; padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 0.9rem; }
-        .t-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .t-title { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
-        .t-features { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; height: 32px; overflow: hidden; }
-        .t-badge { font-size: 0.75rem; background: #eff6ff; color: var(--primary); padding: 4px 10px; border-radius: 4px; font-weight: 600; }
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            position: fixed; top: 0; width: 100%; padding: 0.8rem 5%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
         
-        /* Buttons */
-        .t-actions { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .btn-view { border: 1px solid var(--primary); color: var(--primary); padding: 10px; text-align: center; border-radius: 6px; font-weight: 600; cursor: pointer; background: transparent; }
-        .btn-buy { background: #25D366; color: white; padding: 10px; text-align: center; border-radius: 6px; font-weight: 600; text-decoration: none; display: block; }
-        .delete-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 8px; border-radius: 50%; display: none; cursor: pointer; z-index: 100; }
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .hire-btn { background: var(--dark); color: white !important; padding: 8px 20px; border-radius: 50px; }
+        
+        #menu-icon { display: none; font-size: 1.8rem; color: var(--dark); cursor: pointer; }
 
+        /* --- HERO SECTION (Mobile Optimized) --- */
+        .hero { 
+            padding: 120px 5% 60px; text-align: center; 
+            background: radial-gradient(circle at top, #e0e7ff 0%, #f8fafc 60%);
+        }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; color: var(--dark); }
+        .hero p { color: var(--text-gray); max-width: 600px; margin: 0 auto 20px; font-size: 1.1rem; }
+        .hero-badge { background: #dbeafe; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- 1. CATALOG SECTION (Moved Up) --- */
+        .catalog-section { padding: 40px 5% 80px; }
+        .section-title { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; color: var(--text-gray); margin-bottom: 40px; }
+
+        .template-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .template-card {
+            background: white; border-radius: 16px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #f1f5f9;
+            display: flex; flex-direction: column; transition: 0.3s;
+        }
+        .template-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        
+        .t-img-box { position: relative; height: 220px; background: #eee; overflow: hidden; cursor: pointer; }
+        .t-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .template-card:hover .t-img { transform: scale(1.05); }
+        .t-price-tag { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 0.9rem; }
+        
+        .t-content { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
+        .t-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; color: var(--dark); }
+        .t-features { margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 5px; height: 28px; overflow: hidden; }
+        .t-badge { font-size: 0.7rem; background: #eff6ff; color: var(--primary); padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+        
+        .t-actions { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .btn-view { border: 1px solid var(--primary); color: var(--primary); background: transparent; padding: 8px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
+        .btn-buy { background: var(--success); color: white; border: none; padding: 8px; border-radius: 6px; font-weight: 600; text-decoration: none; text-align: center; font-size: 0.9rem; }
+        .delete-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 5px 10px; border-radius: 50%; display: none; cursor: pointer; z-index: 100; }
+
+        /* --- 2. CUSTOM PRICING (Redesigned & Professional) --- */
+        .pricing-section { padding: 80px 5%; background: white; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+
+        .price-card {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 40px 30px;
+            transition: 0.3s; position: relative; display: flex; flex-direction: column;
+        }
+        .price-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1); }
+        
+        .price-header { text-align: center; margin-bottom: 25px; }
+        .plan-name { font-size: 1.2rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; }
+        .plan-price { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin: 10px 0; }
+        .plan-price span { font-size: 1rem; color: var(--text-gray); font-weight: 500; }
+        
+        /* Recommended Badge */
+        .recommended { border: 2px solid var(--primary); background: #f8fbff; }
+        .rec-badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); background: var(--primary); color: white; padding: 5px 20px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+
+        .features-list { list-style: none; margin-bottom: 30px; flex-grow: 1; text-align: left; }
+        .features-list li { margin-bottom: 15px; color: var(--text-gray); display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .features-list li i { color: var(--primary); font-size: 1.1rem; }
+
+        .btn-full { display: block; width: 100%; padding: 15px; text-align: center; background: var(--dark); color: white; border-radius: 10px; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        .btn-full:hover { background: var(--primary); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
+        .btn-outline { background: transparent; border: 2px solid var(--dark); color: var(--dark); }
+        .btn-outline:hover { background: var(--dark); color: white; }
+
+        /* --- 3. COMPARISON TABLE (New Feature) --- */
+        .compare-section { padding: 80px 5%; background: var(--bg-light); }
+        .table-wrapper { overflow-x: auto; margin-top: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 16px; background: white; }
+        
+        .comp-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        .comp-table th, .comp-table td { padding: 20px; text-align: center; border-bottom: 1px solid #f1f5f9; }
+        .comp-table th { background: #f8fafc; color: var(--dark); font-weight: 700; font-size: 1rem; }
+        .comp-table td { color: var(--text-gray); font-size: 0.95rem; }
+        .comp-table th:first-child, .comp-table td:first-child { text-align: left; padding-left: 30px; font-weight: 600; color: var(--dark); }
+        .comp-table tr:last-child td { border-bottom: none; }
+        .check-icon { color: var(--success); font-size: 1.2rem; }
+        .cross-icon { color: #cbd5e1; font-size: 1.2rem; }
+
+        /* --- CTA SECTION --- */
         .cta-section { padding: 80px 10%; text-align: center; }
-        .cta-box { background: linear-gradient(135deg, var(--primary), #3730a3); border-radius: 24px; padding: 60px 20px; color: white; }
-        .whatsapp-btn { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
+        .cta-box { background: var(--gradient); border-radius: 24px; padding: 60px 20px; color: white; box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2); }
+        .whatsapp-btn { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .whatsapp-btn:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 
         /* --- MODALS --- */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
-        .detail-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; position: relative; }
-        .detail-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .detail-img-box { width: 100%; height: 350px; background: #f0f0f0; position: relative; }
-        .detail-img { width: 100%; height: 100%; object-fit: contain; background: #0f172a; cursor: zoom-in; } /* Cursor Zoom */
-        .detail-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; transform: translateY(-50%); }
-        .detail-nav button { background: rgba(255,255,255,0.2); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%; font-size: 1.5rem; }
-        .detail-info { padding: 25px; overflow-y: auto; }
-        .form-box { background: white; padding: 30px; border-radius: 12px; width: 400px; max-width: 90%; }
-        .form-input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        .form-btn { width: 100%; background: var(--primary); color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        .detail-content { background: white; width: 95%; max-width: 600px; border-radius: 16px; overflow: hidden; position: relative; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- ZOOM OVERLAY (NEW) --- */
-        #zoomOverlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 3000;
-            justify-content: center; align-items: center;
-        }
-        #zoomOverlay img { max-width: 95%; max-height: 95%; object-fit: contain; }
+        .detail-img-box { position: relative; width: 100%; height: 300px; background: #000; }
+        .detail-img { width: 100%; height: 100%; object-fit: contain; cursor: zoom-in; }
+        .detail-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; transform: translateY(-50%); }
+        .detail-nav button { background: rgba(255,255,255,0.2); color: white; border: none; padding: 10px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; }
+        
+        .detail-info { padding: 25px; }
+        .detail-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 5px; }
+        .detail-price { font-size: 1.2rem; color: var(--primary); font-weight: 700; margin-bottom: 15px; }
+        
+        /* Zoom Overlay */
+        #zoomOverlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 3000; justify-content: center; align-items: center; }
+        #zoomOverlay img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .close-zoom { position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; cursor: pointer; }
+
+        /* Admin Forms */
+        .form-box { background: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; }
+        .form-input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; }
+        .form-btn { width: 100%; background: var(--primary); color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
 
         /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
             header { padding: 1rem 5%; }
             #menu-icon { display: block; z-index: 1001; }
-            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px; display: none; }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px; display: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
             .nav-links.active { display: flex; }
+            
+            /* Mobile Hero */
+            .hero { padding: 100px 5% 40px; }
+            .hero h1 { font-size: 2rem; }
+            
+            /* --- FIXED: 2 Columns for Templates --- */
+            .template-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+            .t-img-box { height: 130px; }
+            .t-content { padding: 10px; }
+            .t-title { font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .t-actions { gap: 5px; }
+            .btn-view, .btn-buy { font-size: 0.8rem; padding: 6px; }
+
+            /* Pricing Stack */
             .pricing-grid { grid-template-columns: 1fr; }
             
-            /* --- FIXED: 2 COLUMNS ON MOBILE --- */
-            .template-grid { 
-                grid-template-columns: repeat(2, 1fr) !important; /* Force 2 Columns */
-                gap: 10px; 
-            }
-            .t-image-container { height: 140px; } /* Smaller images */
-            .t-content { padding: 12px; }
-            .t-title { font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-            .t-actions { gap: 5px; }
-            .btn-view, .btn-buy { padding: 8px 5px; font-size: 0.8rem; }
+            /* Table Scroll */
+            .comp-table th, .comp-table td { padding: 15px 10px; font-size: 0.85rem; }
             .detail-img-box { height: 250px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <a href="index.html" class="logo">WebiFy.</a>
         <i class="fas fa-bars" id="menu-icon" onclick="window.toggleMenu()"></i>
         <nav class="nav-links" id="navLinks">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="pricing.html" class="active">Pricing</a>
+            <a href="pricing.html" class="active">Store</a>
             <a href="contact.html">Contact</a>
             <a href="hire.html" class="hire-btn">Hire Me</a>
         </nav>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
-        <span class="badge">🚀 Launch Your Business Online</span>
-        <h1>Affordable Websites & <br>Premium Templates</h1>
+        <span class="hero-badge">Digital Store</span>
+        <h1>Launch Your Dream Website</h1>
+        <p>Choose from our premium ready-made templates or order a fully custom website designed just for you.</p>
     </section>
 
-    <section id="pricing" class="pricing-section">
-        <h2 style="text-align:center; margin-bottom:40px;">Custom Plans</h2>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3 class="plan-name">Starter</h3><div class="plan-price">₹499</div>
-                <ul class="features-list"><li>1 Page Website</li><li>Mobile Responsive</li></ul>
-                <a href="https://wa.me/919376917149?text=Hello,%20Starter%20Plan." target="_blank" class="btn-full">Choose Starter</a>
-            </div>
-            <div class="price-card popular">
-                <h3 class="plan-name">Professional</h3><div class="plan-price">₹1,599</div>
-                <ul class="features-list"><li>5 Pages Website</li><li>Basic SEO</li></ul>
-                <a href="https://wa.me/919376917149?text=Hello,%20Professional%20Plan." target="_blank" class="btn-full" style="background:var(--primary)">Choose Professional</a>
-            </div>
-            <div class="price-card">
-                <h3 class="plan-name">Premium</h3><div class="plan-price">₹4,000</div>
-                <ul class="features-list"><li>10 Pages Website</li><li>Animations</li></ul>
-                <a href="https://wa.me/919376917149?text=Hello,%20Premium%20Plan." target="_blank" class="btn-full">Choose Premium</a>
-            </div>
-        </div>
-    </section>
-
+    <!-- 1. TEMPLATE CATALOG (Websites for Sale) -->
     <section id="catalog" class="catalog-section">
-        <h2 style="text-align:center; margin-bottom:40px;">Ready-Made Templates</h2>
+        <h2 class="section-title">Ready-Made Templates</h2>
+        <p class="section-subtitle">Instant Delivery. High Quality. Affordable.</p>
+        
+        <!-- Grid Populated by JS -->
         <div class="template-grid" id="templateGrid"></div>
     </section>
 
+    <!-- 2. CUSTOM PRICING (Professional Plans) -->
+    <section class="pricing-section">
+        <h2 class="section-title">Custom Development</h2>
+        <p class="section-subtitle">Tailored solutions built from scratch for your brand.</p>
+
+        <div class="pricing-grid">
+            <!-- Plan 1 -->
+            <div class="price-card">
+                <div class="price-header">
+                    <div class="plan-name">Basic</div>
+                    <div class="plan-price">₹2,999<span>/one-time</span></div>
+                    <p style="font-size:0.9rem; color:#64748b;">Best for personal profiles.</p>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> 1 Page Website</li>
+                    <li><i class="fas fa-check-circle"></i> Mobile Responsive</li>
+                    <li><i class="fas fa-check-circle"></i> Contact Button</li>
+                    <li><i class="fas fa-check-circle"></i> Fast Loading</li>
+                </ul>
+                <a href="https://wa.me/919376917149?text=Interested%20in%20Basic%20Plan" class="btn-full btn-outline">Select Basic</a>
+            </div>
+
+            <!-- Plan 2 (Recommended) -->
+            <div class="price-card recommended">
+                <span class="rec-badge">Best Value</span>
+                <div class="price-header">
+                    <div class="plan-name" style="color:var(--primary);">Professional</div>
+                    <div class="plan-price">₹5,999<span>/one-time</span></div>
+                    <p style="font-size:0.9rem; color:#64748b;">Perfect for small businesses.</p>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> 5 Pages Design</li>
+                    <li><i class="fas fa-check-circle"></i> SEO Optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Contact Form + Map</li>
+                    <li><i class="fas fa-check-circle"></i> Social Media Integration</li>
+                    <li><i class="fas fa-check-circle"></i> 1 Month Support</li>
+                </ul>
+                <a href="https://wa.me/919376917149?text=Interested%20in%20Professional%20Plan" class="btn-full">Get Professional</a>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="price-card">
+                <div class="price-header">
+                    <div class="plan-name">Premium</div>
+                    <div class="plan-price">₹11,999<span>/one-time</span></div>
+                    <p style="font-size:0.9rem; color:#64748b;">For growing companies.</p>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> 10+ Pages / E-commerce</li>
+                    <li><i class="fas fa-check-circle"></i> Admin Dashboard</li>
+                    <li><i class="fas fa-check-circle"></i> Payment Gateway</li>
+                    <li><i class="fas fa-check-circle"></i> Advanced Animations</li>
+                    <li><i class="fas fa-check-circle"></i> 3 Months Support</li>
+                </ul>
+                <a href="https://wa.me/919376917149?text=Interested%20in%20Premium%20Plan" class="btn-full btn-outline">Select Premium</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. COMPARISON TABLE -->
+    <section class="compare-section">
+        <h2 class="section-title">Compare Features</h2>
+        <div class="table-wrapper">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th style="width:30%;">Feature</th>
+                        <th>Basic</th>
+                        <th>Pro</th>
+                        <th>Premium</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Number of Pages</td>
+                        <td>1 Page</td>
+                        <td>5 Pages</td>
+                        <td>10+ Pages</td>
+                    </tr>
+                    <tr>
+                        <td>Responsive Design</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>SEO Setup</td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td>Basic</td>
+                        <td>Advanced</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Form</td>
+                        <td>Button Only</td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Admin Panel</td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-times cross-icon"></i></td>
+                        <td><i class="fas fa-check check-icon"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Free Support</td>
+                        <td>1 Week</td>
+                        <td>1 Month</td>
+                        <td>3 Months</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CTA & Footer -->
     <section class="cta-section">
         <div class="cta-box">
-            <h2>Start Your Website Today</h2>
+            <h2>Ready to Start?</h2>
+            <p style="margin-bottom:20px;">Let's discuss your project and build something amazing.</p>
             <a href="https://wa.me/919376917149" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
-        <div style="margin-top: 50px;"><span class="admin-trigger" onclick="document.getElementById('loginModal').style.display='flex'">Admin Access</span></div>
+        <div style="margin-top: 50px;">
+            <span style="font-size:0.8rem; color:#ccc; cursor:pointer;" onclick="document.getElementById('loginModal').style.display='flex'">Admin Access</span>
+        </div>
     </section>
+
+    <!-- ========= MODALS ========= -->
 
     <!-- DETAIL POPUP -->
     <div id="detailModal" class="modal">
         <div class="detail-content">
             <div class="detail-header">
-                <h3 id="dTitle" style="margin:0;">Title</h3>
-                <i class="fas fa-times" style="font-size:1.5rem; cursor:pointer;" onclick="document.getElementById('detailModal').style.display='none'"></i>
+                <i class="fas fa-times" style="font-size:1.5rem; cursor:pointer; margin-left:auto;" onclick="document.getElementById('detailModal').style.display='none'"></i>
             </div>
             <div class="detail-img-box">
-                <!-- Added onclick to trigger Zoom -->
-                <img id="dImg" class="detail-img" src="" alt="" onclick="window.openZoom()">
+                <img id="dImg" class="detail-img" src="" onclick="window.openZoom()">
                 <div class="detail-nav">
                     <button onclick="window.prevImage()"><i class="fas fa-chevron-left"></i></button>
                     <button onclick="window.nextImage()"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
             <div class="detail-info">
-                <div id="dPrice" style="font-size:1.5rem; color:#4f46e5; font-weight:700;">₹2,500</div>
-                <p style="font-size:0.8rem; color:#666;">(Touch photo to Zoom)</p>
-                <div id="dTags" style="margin:10px 0;"></div>
-                <a id="dBuyBtn" href="#" target="_blank" class="btn-buy" style="margin-top:20px; background:#25D366;">Buy on WhatsApp</a>
+                <h3 id="dTitle" class="detail-title">Title</h3>
+                <div id="dPrice" class="detail-price">Price</div>
+                <div id="dTags" style="margin-bottom:15px;"></div>
+                <a id="dBuyBtn" href="#" target="_blank" class="btn-full" style="background:#25D366;">
+                    <i class="fab fa-whatsapp"></i> Buy Now
+                </a>
             </div>
         </div>
     </div>
@@ -184,22 +373,24 @@
     <!-- ADMIN MODALS -->
     <div id="loginModal" class="modal">
         <div class="form-box">
-            <h3>Login</h3>
-            <input type="email" id="email" class="form-input" placeholder="Email"><input type="password" id="password" class="form-input" placeholder="Password">
+            <h3>Admin Login</h3>
+            <input type="email" id="email" class="form-input" placeholder="Email">
+            <input type="password" id="password" class="form-input" placeholder="Password">
             <button class="form-btn" onclick="window.handleLogin()">Login</button>
-            <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px; border:none; background:none;">Cancel</button>
+            <button onclick="document.getElementById('loginModal').style.display='none'" style="width:100%; padding:10px; margin-top:5px; background:none; border:none; cursor:pointer;">Cancel</button>
         </div>
     </div>
+
     <div id="addModal" class="modal">
         <div class="form-box">
-            <h3>Add Website</h3>
+            <h3>Add New Template</h3>
             <input type="text" id="newTitle" class="form-input" placeholder="Name">
             <input type="text" id="newPrice" class="form-input" placeholder="Price">
             <input type="text" id="newCover" class="form-input" placeholder="Cover URL">
-            <textarea id="newFeatures" class="form-input" placeholder="Features"></textarea>
-            <textarea id="newGallery" class="form-input" placeholder="Gallery URLs"></textarea>
-            <button class="form-btn" onclick="window.addNewTemplate()">Add</button>
-            <button onclick="document.getElementById('addModal').style.display='none'" style="margin-top:10px; border:none; background:none;">Close</button>
+            <textarea id="newFeatures" class="form-input" placeholder="Features (comma sep)"></textarea>
+            <textarea id="newGallery" class="form-input" placeholder="Gallery URLs (comma sep)"></textarea>
+            <button class="form-btn" onclick="window.addNewTemplate()">Add Template</button>
+            <button onclick="document.getElementById('addModal').style.display='none'" style="width:100%; padding:10px; margin-top:5px; background:none; border:none; cursor:pointer;">Close</button>
         </div>
     </div>
 
@@ -227,10 +418,14 @@
                 let tags = item.features ? item.features.map(f => `<span class="t-badge">${f.trim()}</span>`).join('') : '';
                 let del = isAdmin ? `<button class="delete-btn" style="display:block" onclick="window.deleteTemplate('${item.id}', event)">X</button>` : '';
                 let waLink = `https://wa.me/919376917149?text=${encodeURIComponent("Buying: " + item.title)}`;
+                
                 grid.innerHTML += `
                     <div class="template-card">
                         ${del}
-                        <div class="t-image-container" onclick="window.openDetail(${index})"><img src="${item.cover}" class="t-img"><div class="t-price-tag">${item.price}</div></div>
+                        <div class="t-img-box" onclick="window.openDetail(${index})">
+                            <img src="${item.cover}" class="t-img">
+                            <div class="t-price-tag">${item.price}</div>
+                        </div>
                         <div class="t-content">
                             <h3 class="t-title">${item.title}</h3>
                             <div class="t-features">${tags}</div>
@@ -261,11 +456,8 @@
         }
         window.nextImage = function() { imgIdx++; window.updateImage(); }
         window.prevImage = function() { imgIdx--; window.updateImage(); }
-
-        // --- ZOOM LOGIC ---
         window.openZoom = function() {
-            const src = document.getElementById('dImg').src;
-            document.getElementById('zoomImg').src = src;
+            document.getElementById('zoomImg').src = document.getElementById('dImg').src;
             document.getElementById('zoomOverlay').style.display = 'flex';
         }
 
