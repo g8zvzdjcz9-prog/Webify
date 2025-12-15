@@ -5,100 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webify – Build Your Digital Identity With Us</title>
     
-    <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="rjaD9OwzZTH-rNYARlFDNQhzk7zhnbwUyJ_v6EHxy6U" />
-
-    <!-- Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-      /* --- CSS (Internal) --- */
         @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&family=Gabarito:wght@700&display=swap');
 
-        :root {
-            --primary-blue: #2563eb;       
-            --bg-light: #eff6ff;      
-            --white: #ffffff;
-            --text-dark: #0f172a;          
-            --text-gray: #64748b;
-            --dark-teal: #0f172a; 
-            --beige: #fef3c7;     
-            --light-gray: #f8fafc;
-        }
+        :root { --primary-blue: #2563eb; --bg-light: #eff6ff; --white: #ffffff; --text-dark: #0f172a; --text-gray: #64748b; --dark-teal: #0f172a; --beige: #fef3c7; --light-gray: #f8fafc; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--white); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
 
-        /* Animation Classes */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Header */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; padding: 0.8rem 10%;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center; 
-            z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 0.8rem 10%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.05); transition: 0.3s; }
         .logo { font-size: 1.8rem; font-weight: 800; color: var(--primary-blue); text-decoration: none; letter-spacing: -0.5px; }
-        
         .navbar { display: flex; align-items: center; }
-        .navbar a {
-            font-size: 1rem; color: var(--text-dark); text-decoration: none;
-            margin-left: 2.5rem; font-weight: 600; transition: 0.3s;
-        }
+        .navbar a { font-size: 1rem; color: var(--text-dark); text-decoration: none; margin-left: 2.5rem; font-weight: 600; transition: 0.3s; }
         .navbar a:hover, .navbar a.active { color: var(--primary-blue); }
-        
         .hire-btn { background: var(--primary-blue); color: white !important; padding: 10px 24px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); transition: 0.3s; }
-        .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
-
-        /* Hamburger Menu Icon (Hidden on Desktop) */
         #menu-icon { font-size: 2.5rem; color: var(--text-dark); display: none; cursor: pointer; }
 
-        /* --- HERO SECTION --- */
-        .home-container {
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 50px; 
-            min-height: auto; 
-            padding: 110px 10% 40px; 
-            background: radial-gradient(circle at top right, #eff6ff 0%, #fff 40%);
-        }
-
+        .home-container { display: flex; align-items: center; justify-content: space-between; gap: 50px; min-height: auto; padding: 110px 10% 40px; background: radial-gradient(circle at top right, #eff6ff 0%, #fff 40%); }
         .home-content { flex: 1.2; max-width: 600px; }
         .home-content h3 { font-size: 1.5rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 5px; }
         .home-content h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.1; margin: 10px 0 20px 0; color: #1e293b; letter-spacing: -1.5px; }
         .home-content p { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; max-width: 550px; line-height: 1.6; }
-        
         .home-img { flex: 1; display: flex; justify-content: flex-end; position: relative; }
-        .home-img img {
-            width: 100%; max-width: 480px; height: auto;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            box-shadow: 20px 20px 60px rgba(37, 99, 235, 0.15); 
-            animation: float 6s ease-in-out infinite;
-        }
+        .home-img img { width: 100%; max-width: 480px; height: auto; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; box-shadow: 20px 20px 60px rgba(37, 99, 235, 0.15); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        
         .btn { display: inline-block; padding: 0.9rem 2.2rem; background: var(--primary-blue); color: white; border-radius: 8px; text-decoration: none; transition: 0.3s; font-weight: 600; cursor: pointer; border: none; font-size: 1rem;}
-        .btn:hover { background: #1d4ed8; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25); }
         .contact-link { margin-left: 25px; text-decoration: none; color: var(--text-dark); font-weight: 700; display: inline-flex; align-items: center; gap: 5px; font-size: 1rem; }
-        .contact-link:hover { color: var(--primary-blue); gap: 10px; transition: 0.3s; }
 
-        /* Tech Stack Marquee */
         .tech-stack { padding: 40px 0; background: white; border-bottom: 1px solid #f1f5f9; overflow: hidden; }
         .tech-title { text-align: center; font-size: 0.85rem; color: #94a3b8; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
         .marquee-wrapper { display: flex; width: 100%; overflow: hidden; }
         .marquee-content { display: flex; gap: 60px; animation: scroll 25s linear infinite; padding-left: 50px; }
         .tech-item { font-size: 2.2rem; color: #cbd5e1; transition: 0.3s; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
         .tech-item span { font-size: 1.2rem; font-weight: 600; color: #94a3b8; }
-        .tech-item:hover { color: var(--primary-blue); transform: scale(1.1); }
-        .tech-item:hover span { color: var(--text-dark); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-        /* --- FEATURED WEBSITES SECTION (New) --- */
+        /* --- FEATURED WEBSITES (Home Page) --- */
         .featured-section { padding: 80px 10%; background: #f8fafc; text-align: center; }
         .featured-grid { 
             display: grid; 
@@ -107,148 +56,105 @@
             margin-top: 40px; 
             margin-bottom: 40px;
         }
-        .f-card {
-            background: white; border-radius: 16px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s;
-            border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column;
-        }
-        .f-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15); }
+        .f-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid #e2e8f0; text-align: left; display: flex; flex-direction: column; }
+        .f-card:hover { transform: translateY(-10px); }
         .f-img-box { height: 200px; width: 100%; overflow: hidden; position: relative; }
         .f-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .f-card:hover .f-img { transform: scale(1.05); }
         .f-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
         .f-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; color: var(--text-dark); }
         .f-price { font-size: 1.1rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 15px; }
-        .f-footer { margin-top: auto; }
 
-        /* Expertise Section */
         .expertise-section { padding: 80px 10%; text-align: center; background: #fff; }
-        .section-header h2 { font-size: 2.8rem; margin-bottom: 15px; font-family: 'Gabarito', sans-serif; color: #0f172a; }
-        .section-header p { margin-bottom: 70px; color: var(--text-gray); max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
-        
         .cards-container { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
-        .srv-card {
-            flex: 1; min-width: 300px; padding: 45px; border-radius: 24px; text-align: left;
-            position: relative; overflow: hidden; height: 380px; display: flex; flex-direction: column; justify-content: space-between;
-            transition: all 0.4s ease; border: 1px solid transparent;
-        }
-        .srv-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-
+        .srv-card { flex: 1; min-width: 300px; padding: 45px; border-radius: 24px; text-align: left; position: relative; overflow: hidden; height: 380px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid transparent; transition: all 0.4s ease;}
         .card-dark { background-color: var(--dark-teal); color: white; }
         .card-beige { background-color: var(--beige); color: #451a03; }
         .card-light { background-color: var(--light-gray); color: #1f2937; border: 1px solid #e2e8f0; }
 
-        /* What I Can Build Section */
         .build-section { padding: 80px 10%; background: #f8fafc; }
         .build-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         .build-card { background: white; padding: 40px; border-radius: 20px; border: 1px solid #e2e8f0; transition: 0.3s all ease; display: flex; flex-direction: column; height: 100%; }
-        .build-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--primary-blue); }
         .build-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; color: #0f172a; }
-        .build-desc { color: #64748b; font-size: 1rem; margin-bottom: 25px; flex-grow: 1; line-height: 1.6; }
+        .build-desc { color: #64748b; font-size: 1rem; margin-bottom: 25px; flex-grow: 1; }
         .build-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
         .build-tag { font-size: 0.75rem; background: #eff6ff; color: var(--primary-blue); padding: 6px 14px; border-radius: 50px; font-weight: 700; text-transform: uppercase; }
-        .build-btn { color: var(--text-dark); font-weight: 700; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px; transition: 0.3s; }
-        .build-btn:hover { gap: 10px; color: var(--primary-blue); }
+        .build-btn { color: var(--text-dark); font-weight: 700; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 6px; }
 
-        /* Workflow Section */
         .workflow-section { display: flex; align-items: center; background: #fff; padding: 80px 10%; gap: 80px; }
         .workflow-text { flex: 1; }
-        .workflow-text h2 { font-size: 3rem; line-height: 1.2; margin-bottom: 30px; font-weight: 700; }
         .step { display: flex; gap: 25px; margin-bottom: 40px; }
         .step-num { font-weight: 900; color: var(--primary-blue); font-size: 2.5rem; opacity: 0.2; line-height: 1; }
-        .step h4 { font-size: 1.3rem; margin-bottom: 8px; font-weight: 700; }
-        .step p { color: #64748b; font-size: 1.05rem; }
         .workflow-img { flex: 1; position: relative; }
         .workflow-img img { width: 100%; border-radius: 24px; box-shadow: 0 25px 60px rgba(0,0,0,0.12); }
 
-        /* Stats Section */
         .stats-section { background: var(--dark-teal); padding: 80px 10%; color: white; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 30px; }
         .stat-item { padding: 10px; flex: 1; min-width: 150px; }
         .stat-num { font-size: 3.5rem; font-weight: 700; color: var(--primary-blue); display: block; margin-bottom: 5px; }
-        .stat-label { font-size: 1.2rem; opacity: 0.7; font-weight: 500; }
 
-        /* FAQ */
         .faq-section { padding: 80px 10%; background: #fff; max-width: 900px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid #e2e8f0; padding: 25px 0; }
         .faq-question { font-size: 1.25rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #1e293b; }
         .faq-answer { display: none; margin-top: 15px; color: #64748b; line-height: 1.7; font-size: 1.05rem; }
         .faq-item.active .faq-answer { display: block; animation: fadeIn 0.5s; }
-        .faq-item.active .faq-question { color: var(--primary-blue); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Footer */
         footer { background: #0f172a; color: #94a3b8; padding: 90px 10% 30px; font-size: 1rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 70px; }
-        .footer-col h4 { font-size: 1.2rem; margin-bottom: 25px; color: #fff; font-weight: 700; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 15px; }
         .footer-col ul li a { color: #94a3b8; text-decoration: none; transition: 0.3s; }
-        .footer-col ul li a:hover { color: #fff; padding-left: 5px; }
         .footer-bottom { border-top: 1px solid #1e293b; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
 
-        /* Modal Base */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
-        .login-content { background: white; padding: 40px 30px; border-radius: 16px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
+        .login-content { background: white; padding: 40px 30px; border-radius: 16px; width: 100%; max-width: 400px; text-align: center; }
         .login-content input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1rem; }
 
-        /* --- PORTFOLIO POPUP --- */
-        .portfolio-content { background: white; padding: 40px; border-radius: 20px; width: 90%; max-width: 1100px; height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.3); text-align: left; }
-        .portfolio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 20px; }
+        .portfolio-content { background: white; padding: 40px; border-radius: 20px; width: 90%; max-width: 1100px; height: 90vh; overflow-y: auto; position: relative; }
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
-        .portfolio-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; transition: 0.3s; position: relative; }
-        .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .portfolio-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; position: relative; }
         .portfolio-img { width: 100%; height: 200px; object-fit: cover; background: #f1f5f9; cursor: pointer; }
         .portfolio-info { padding: 20px; }
-        .portfolio-info h4 { margin-bottom: 8px; font-size: 1.2rem; }
-        .portfolio-info p { color: #64748b; font-size: 0.9rem; margin-bottom: 15px; height: 45px; overflow: hidden; }
-        .close-btn { font-size: 2rem; cursor: pointer; color: #64748b; transition: 0.2s; }
-        .close-btn:hover { color: #ef4444; }
+        .close-btn { font-size: 2rem; cursor: pointer; color: #64748b; }
         .add-project-btn { display: none; background: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; margin-bottom: 20px; }
         .delete-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: none; align-items: center; justify-content: center; }
-        
         .admin-modal-content { background: white; padding: 30px; border-radius: 16px; width: 100%; max-width: 500px; text-align: left; }
-        .admin-modal-content input, .admin-modal-content textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; }
+        .admin-modal-content input, .admin-modal-content textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #e2e8f0; border-radius: 8px; }
 
         .gallery-content { background: white; padding: 0; border-radius: 16px; width: 90%; max-width: 900px; height: 85vh; display: flex; flex-direction: column; overflow: hidden; }
         .gallery-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .gallery-body { flex: 1; overflow-y: auto; padding: 30px; background: #f8fafc; text-align: center; }
         .gallery-img { width: 100%; max-width: 800px; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: block; margin-left: auto; margin-right: auto; }
-        
-        /* Mobile Responsiveness */
+
         @media (max-width: 1024px) {
             header { padding: 1rem 5%; }
             .home-container { padding: 100px 5% 40px; }
-            .expertise-section, .build-section, .portfolio-section, .workflow-section, .stats-section, .testimonials-section, .faq-section, footer { padding: 80px 5%; }
-            .home-content h1 { font-size: 3.5rem; }
+            .expertise-section, .build-section, .workflow-section, footer { padding: 80px 5%; }
         }
 
         @media (max-width: 768px) {
             #menu-icon { display: block; z-index: 1001; }
-            .navbar { position: absolute; top: 100%; left: 0; width: 100%; background: white; border-top: 1px solid #f1f5f9; flex-direction: column; padding: 1rem 0 2rem; box-shadow: 0 10px 15px rgba(0,0,0,0.05); display: none; }
-            .navbar.active { display: flex; animation: slideDown 0.3s ease; }
-            @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-            .navbar a { margin: 15px 0; font-size: 1.2rem; display: block; }
-            .hire-btn { display: inline-block; width: 80%; text-align: center; margin-top: 10px; }
-
-            .home-container { flex-direction: row !important; align-items: center; justify-content: space-between; gap: 15px; padding-top: 85px; padding-bottom: 20px; text-align: left; }
+            .navbar { position: absolute; top: 100%; left: 0; width: 100%; background: white; border-top: 1px solid #f1f5f9; flex-direction: column; padding: 1rem 0 2rem; display: none; }
+            .navbar.active { display: flex; }
+            .navbar a { margin: 15px 0; }
+            .home-container { flex-direction: row !important; align-items: center; gap: 15px; padding-top: 85px; padding-bottom: 20px; text-align: left; }
             .home-content { flex: 1.5; }
-            .home-img { flex: 1; margin-bottom: 0; justify-content: center; display: flex; }
-            .home-img img { width: 100%; max-width: 150px; border-radius: 20px; box-shadow: 5px 5px 20px rgba(37, 99, 235, 0.1); }
-            
-            .home-content h1 { font-size: 1.6rem; margin: 5px 0; line-height: 1.2; }
-            .home-content h3 { font-size: 0.9rem; }
-            .home-content p { font-size: 0.8rem; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-            .btn { padding: 8px 16px; font-size: 0.85rem; width: auto; }
-            .contact-link { margin-left: 0; font-size: 0.9rem; }
-
-            .section-header h2 { font-size: 2.2rem; }
-            .workflow-section { flex-direction: column; gap: 40px; text-align: center; }
+            .home-img { flex: 1; }
+            .home-img img { max-width: 150px; }
+            .home-content h1 { font-size: 1.6rem; }
+            .srv-card { min-width: 100%; }
+            .workflow-section { flex-direction: column; text-align: center; }
             .workflow-text { text-align: left; }
-            .stats-section { flex-direction: column; gap: 40px; }
             .footer-bottom { flex-direction: column; text-align: center; }
             
-            .portfolio-content { padding: 20px; width: 95%; height: 80vh; }
-            .portfolio-grid { grid-template-columns: 1fr; gap: 20px; }
+            /* --- FIXED: 2 COLUMNS ON MOBILE (Home Page) --- */
+            .featured-grid { 
+                grid-template-columns: repeat(2, 1fr) !important; /* Force 2 cols */
+                gap: 10px; 
+            }
+            .f-img-box { height: 120px; } /* Smaller images */
+            .f-content { padding: 10px; }
+            .f-title { font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .f-price { font-size: 0.95rem; margin-bottom: 8px; }
         }
 
         @media (max-width: 480px) {
@@ -258,7 +164,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <a href="index.html" class="logo">WebiFy.</a>
         <i class='bx bx-menu' id="menu-icon"></i>
@@ -272,387 +177,226 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="home-container reveal">
         <div class="home-content">
             <h3 style="font-weight: 600;">Hello, I am</h3>
             <h1>Abhishek Sharma</h1>
             <h3>Professional <span class="auto-type"></span></h3>
-            <p>I build high-performance websites and applications that help businesses scale. Specialized in React, Node.js, and Modern UI Design.</p>
-            <div>
-                <button onclick="window.openPortfolio()" class="btn">View My Portfolio</button>
-                <a href="contact.html" class="contact-link">Contact Me <i class='bx bx-right-arrow-alt'></i></a>
-            </div>
+            <p>I build high-performance websites and applications that help businesses scale.</p>
+            <div><button onclick="window.openPortfolio()" class="btn">View My Portfolio</button></div>
         </div>
-        <div class="home-img">
-            <img src="https://image2url.com/images/1764571338748-34acb78f-764a-4df5-a4ef-0ea4dcb0d89e.jpg" alt="Abhishek Sharma">
-        </div>
+        <div class="home-img"><img src="https://image2url.com/images/1764571338748-34acb78f-764a-4df5-a4ef-0ea4dcb0d89e.jpg" alt="Abhishek Sharma"></div>
     </section>
 
-    <!-- Tech Stack Marquee -->
     <div class="tech-stack reveal">
         <div class="tech-title">Technologies & Tools I Use</div>
         <div class="marquee-wrapper">
             <div class="marquee-content">
                 <div class="tech-item"><i class="fab fa-react"></i> <span>React</span></div>
                 <div class="tech-item"><i class="fab fa-node-js"></i> <span>Node.js</span></div>
-                <div class="tech-item"><i class="fab fa-js"></i> <span>JavaScript</span></div>
                 <div class="tech-item"><i class="fab fa-html5"></i> <span>HTML5</span></div>
                 <div class="tech-item"><i class="fab fa-css3-alt"></i> <span>CSS3</span></div>
                 <div class="tech-item"><i class="fab fa-figma"></i> <span>Figma</span></div>
-                <div class="tech-item"><i class="fab fa-react"></i> <span>React</span></div>
             </div>
         </div>
     </div>
 
-    <!-- NEW SECTION: Featured Ready-Made Websites -->
+    <!-- FEATURED WEBSITES (Home Page - 2 Column Mobile) -->
     <section class="featured-section reveal">
         <div class="section-header">
             <h5 style="color: var(--primary-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Ready To Launch</h5>
             <h2>Featured Websites</h2>
             <p>Select from my premium collection of ready-made templates.</p>
         </div>
-
         <div class="featured-grid" id="homeTemplateGrid">
-            <!-- Items will be loaded here via JavaScript -->
-            <p style="text-align:center; width:100%;">Loading Templates...</p>
+            <!-- Loaded by JS -->
+            <p>Loading...</p>
         </div>
-
         <a href="pricing.html" class="btn" style="background: var(--dark-teal);">View All Templates <i class='bx bx-right-arrow-alt'></i></a>
     </section>
 
-    <!-- Expertise Section -->
     <section id="services" class="expertise-section reveal">
-        <div class="section-header">
-            <h2>My Areas of Expertise</h2>
-            <p>From simple landing pages to complex enterprise web apps.</p>
-        </div>
+        <div class="section-header"><h2>My Areas of Expertise</h2><p>From simple landing pages to complex web apps.</p></div>
         <div class="cards-container">
-            <div class="srv-card card-dark">
-                <div><h3>UI/UX Design</h3><p>Crafting digital experiences that feel effortless.</p></div>
-                <div style="margin-top: auto;"><i class='bx bxl-figma' style="font-size: 2.2rem;"></i></div>
-            </div>
-            <div class="srv-card card-beige">
-                <div><h3>Web Development</h3><p>Lightning-fast, secure, and scalable websites.</p></div>
-                <div style="margin-top: auto; font-family: monospace; color: #d97706; font-size: 1.1rem;">&lt;Clean Code /&gt;</div>
-            </div>
-            <div class="srv-card card-light">
-                <div><h3>SEO & Performance</h3><p>Your website deserves visibility.</p></div>
-                <div style="margin-top: auto;"><span style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue);">#1</span> Rank</div>
-            </div>
+            <div class="srv-card card-dark"><div><h3>UI/UX Design</h3><p>Crafting digital experiences.</p></div></div>
+            <div class="srv-card card-beige"><div><h3>Web Development</h3><p>Fast, secure, and scalable websites.</p></div></div>
+            <div class="srv-card card-light"><div><h3>SEO & Performance</h3><p>Your website deserves visibility.</p></div></div>
         </div>
     </section>
 
-    <!-- Build Section -->
     <section class="build-section reveal">
-        <div class="section-header" style="text-align: center;">
-            <h2>What I Can Build For You</h2>
-        </div>
+        <div class="section-header" style="text-align: center;"><h2>What I Can Build For You</h2></div>
         <div class="build-grid">
-            <div class="build-card">
-                <h3 class="build-title">Business Website</h3>
-                <p class="build-desc">Professional, clean and trustworthy websites designed for businesses.</p>
-                <div class="build-tags"><span class="build-tag">Corporate</span><span class="build-tag">Fast</span></div>
-                <a href="contact.html" class="build-btn">Start Project <i class='bx bx-right-arrow-alt'></i></a>
-            </div>
-            <div class="build-card">
-                <h3 class="build-title">Personal Portfolio</h3>
-                <p class="build-desc">A stylish and modern portfolio layout to showcase skills.</p>
-                <div class="build-tags"><span class="build-tag">Creative</span><span class="build-tag">Bio</span></div>
-                <a href="contact.html" class="build-btn">Start Project <i class='bx bx-right-arrow-alt'></i></a>
-            </div>
-            <div class="build-card">
-                <h3 class="build-title">E-commerce Layout</h3>
-                <p class="build-desc">Clean product layouts with smooth browsing.</p>
-                <div class="build-tags"><span class="build-tag">Shop</span><span class="build-tag">Secure</span></div>
-                <a href="contact.html" class="build-btn">Start Project <i class='bx bx-right-arrow-alt'></i></a>
-            </div>
+            <div class="build-card"><h3 class="build-title">Business Website</h3><p class="build-desc">Clean websites for businesses.</p><div class="build-tags"><span class="build-tag">Corporate</span><span class="build-tag">Fast</span></div></div>
+            <div class="build-card"><h3 class="build-title">Personal Portfolio</h3><p class="build-desc">Showcase skills and achievements.</p><div class="build-tags"><span class="build-tag">Creative</span><span class="build-tag">Bio</span></div></div>
+            <div class="build-card"><h3 class="build-title">E-commerce Layout</h3><p class="build-desc">User-friendly shopping experience.</p><div class="build-tags"><span class="build-tag">Shop</span><span class="build-tag">Secure</span></div></div>
         </div>
     </section>
 
-    <!-- Workflow Section -->
-    <section class="workflow-section reveal">
-        <div class="workflow-text">
-            <h2>How I Work: <br>The Process</h2>
-            <div class="step"><span class="step-num">01</span><div><h4>Understand & Plan</h4><p>I create a clear plan for your website.</p></div></div>
-            <div class="step"><span class="step-num">02</span><div><h4>Design & Develop</h4><p>I build a fast, secure, and SEO-friendly website.</p></div></div>
-            <div class="step"><span class="step-num">03</span><div><h4>Review & Launch</h4><p>I launch it with full support and guidance.</p></div></div>
-        </div>
-        <div class="workflow-img">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Team working">
-        </div>
-    </section>
-
-    <!-- Stats -->
     <div class="stats-section reveal">
         <div class="stat-item"><span class="stat-num">2+</span><span class="stat-label">Years Experience</span></div>
         <div class="stat-item"><span class="stat-num">40+</span><span class="stat-label">Projects Completed</span></div>
         <div class="stat-item"><span class="stat-num">30+</span><span class="stat-label">Happy Clients</span></div>
     </div>
 
-    <!-- FAQ -->
     <section class="faq-section reveal">
-        <div class="section-header" style="text-align: center; margin-bottom: 40px;"><h2>Frequently Asked Questions</h2></div>
-        <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-question">How much does a website cost? <i class='bx bx-chevron-down'></i></div><div class="faq-answer">The cost depends on the complexity. A basic site starts at ₹499.</div></div>
-        <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-question">How long does it take? <i class='bx bx-chevron-down'></i></div><div class="faq-answer">Typically 2-4 weeks.</div></div>
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;"><h2>FAQ</h2></div>
+        <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-question">Cost? <i class='bx bx-chevron-down'></i></div><div class="faq-answer">Starts at ₹499.</div></div>
+        <div class="faq-item" onclick="this.classList.toggle('active')"><div class="faq-question">Time? <i class='bx bx-chevron-down'></i></div><div class="faq-answer">2-4 weeks.</div></div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-grid">
-            <div class="footer-col"><div class="logo" style="color: white; margin-bottom: 20px;">WebiFy.</div><p style="opacity: 0.7;">Empowering businesses with cutting-edge web solutions.</p></div>
+            <div class="footer-col"><div class="logo" style="color: white; margin-bottom: 20px;">WebiFy.</div></div>
             <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#">Home</a></li><li><a href="#projects">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-            <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:as90241074@gmail.com">as90241074@gmail.com</a></li><li>+91-9376917149</a></li></ul></div>
+            <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:as90241074@gmail.com">Email Me</a></li><li>+91-9376917149</a></li></ul></div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2025 Abhishek Sharma. All rights reserved.</p></div>
+        <div class="footer-bottom"><p>&copy; 2025 Abhishek Sharma.</p></div>
     </footer>
 
     <!-- MODALS -->
     <div class="modal" id="loginModal">
         <div class="login-content">
-            <h3 style="margin-bottom: 20px; font-weight: 700;">Account Login</h3>
+            <h3 style="margin-bottom: 20px;">Account Login</h3>
             <input type="email" id="email" placeholder="Email Address">
             <input type="password" id="password" placeholder="Password">
             <button class="btn" style="width: 100%; margin-top: 20px;" onclick="window.handleLogin()">Login</button>
             <button class="btn" style="width: 100%; margin-top: 10px; background: #4f46e5;" onclick="window.handleSignUp()">Create Account</button>
-            <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top: 15px; background: none; border: none; cursor: pointer; color: #94a3b8;">Cancel</button>
+            <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top: 15px; background: none; border: none; cursor: pointer;">Cancel</button>
         </div>
     </div>
 
     <div class="modal" id="portfolioModal">
         <div class="portfolio-content">
-            <div class="portfolio-header"><div><h2 style="font-weight: 800; color: var(--primary-blue);">My Portfolio</h2></div><i class='bx bx-x close-btn' onclick="window.closePortfolio()"></i></div>
-            <button id="adminAddBtn" class="add-project-btn" onclick="window.openAddModal()"><i class='bx bx-plus'></i> Add New Project</button>
+            <div class="portfolio-header"><h2>Portfolio</h2><i class='bx bx-x close-btn' onclick="window.closePortfolio()"></i></div>
+            <button id="adminAddBtn" class="add-project-btn" onclick="window.openAddModal()">Add New</button>
             <div class="portfolio-grid" id="portfolioGrid"></div>
         </div>
     </div>
 
     <div class="modal" id="addProjectModal">
         <div class="admin-modal-content">
-            <h3 style="margin-bottom: 20px;">Add New Project</h3>
-            <input type="text" id="newTitle" placeholder="Website Title">
-            <textarea id="newDesc" rows="3" placeholder="Project Description"></textarea>
-            <input type="text" id="newLink" placeholder="Website Live URL">
-            <textarea id="newImages" rows="3" placeholder="Image URLs (Separated by comma or new line)"></textarea>
-            <div style="margin-top: 20px; text-align: right;"><button onclick="document.getElementById('addProjectModal').style.display='none'" style="margin-right: 10px; border: none; background: none; cursor: pointer;">Cancel</button><button class="btn" onclick="window.saveProject()">Save Project</button></div>
+            <h3>Add New Project</h3>
+            <input type="text" id="newTitle" placeholder="Title">
+            <textarea id="newDesc" rows="3" placeholder="Desc"></textarea>
+            <input type="text" id="newLink" placeholder="Link">
+            <textarea id="newImages" rows="3" placeholder="Image URLs"></textarea>
+            <button class="btn" onclick="window.saveProject()">Save</button>
+            <button onclick="document.getElementById('addProjectModal').style.display='none'" style="margin-top:10px; border:none; background:none;">Cancel</button>
         </div>
     </div>
 
     <div class="modal" id="galleryModal">
         <div class="gallery-content">
-            <div class="gallery-header"><h3 id="galleryTitle">Project Title</h3><i class='bx bx-x close-btn' onclick="document.getElementById('galleryModal').style.display='none'"></i></div>
+            <div class="gallery-header"><h3 id="galleryTitle">Title</h3><i class='bx bx-x close-btn' onclick="document.getElementById('galleryModal').style.display='none'"></i></div>
             <div class="gallery-body" id="galleryBody"></div>
-            <div style="padding: 20px; background: white; border-top: 1px solid #eee; text-align: center;"><p id="galleryDesc" style="color: #64748b; margin-bottom: 15px;">Description goes here...</p><a id="galleryLink" href="#" target="_blank" class="btn">Visit Live Website</a></div>
+            <div style="padding: 20px; text-align: center;"><a id="galleryLink" href="#" target="_blank" class="btn">Visit Website</a></div>
         </div>
     </div>
     
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, limit, query } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyDAjm5p9EJueq3eMq7WY9u7cT5GDppedaY",
-          authDomain: "devstudio-36b8e.firebaseapp.com",
-          projectId: "devstudio-36b8e",
-          storageBucket: "devstudio-36b8e.firebasestorage.app",
-          messagingSenderId: "220640508882",
-          appId: "1:220640508882:web:9171e28a580ab6dec1e60b",
-          measurementId: "G-0FSZ1500XG"
-        };
-
+        const firebaseConfig = { apiKey: "AIzaSyDAjm5p9EJueq3eMq7WY9u7cT5GDppedaY", authDomain: "devstudio-36b8e.firebaseapp.com", projectId: "devstudio-36b8e", storageBucket: "devstudio-36b8e.firebasestorage.app", messagingSenderId: "220640508882", appId: "1:220640508882:web:9171e28a580ab6dec1e60b", measurementId: "G-0FSZ1500XG" };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
         const portfolioCollection = collection(db, "portfolio");
-        const templatesCollection = collection(db, "templates"); // For Home page data
+        const templatesCollection = collection(db, "templates");
 
-        let projects = [];
-        let isAdmin = false;
+        let projects = []; let isAdmin = false;
 
-        // --- FETCH HOME PAGE TEMPLATES (Limit 3) ---
         async function fetchHomeTemplates() {
             try {
-                // Get documents (ideally limited, but client side limit works for now)
                 const querySnapshot = await getDocs(templatesCollection);
                 let count = 0;
                 const grid = document.getElementById('homeTemplateGrid');
                 grid.innerHTML = "";
-
                 querySnapshot.forEach((doc) => {
                     if (count < 3) {
                         const data = doc.data();
                         const card = document.createElement('div');
                         card.className = 'f-card';
                         card.innerHTML = `
-                            <div class="f-img-box">
-                                <img src="${data.cover}" alt="${data.title}" class="f-img">
-                            </div>
+                            <div class="f-img-box"><img src="${data.cover}" alt="${data.title}" class="f-img"></div>
                             <div class="f-content">
                                 <h3 class="f-title">${data.title}</h3>
                                 <div class="f-price">${data.price}</div>
-                                <div class="f-footer">
-                                    <a href="pricing.html" style="color:var(--primary-blue); font-weight:600; text-decoration:none;">View Details &rarr;</a>
-                                </div>
+                                <a href="pricing.html" style="color:var(--primary-blue); font-weight:600; text-decoration:none; font-size:0.9rem;">View Details &rarr;</a>
                             </div>
                         `;
                         grid.appendChild(card);
                         count++;
                     }
                 });
-
-                if(count === 0) {
-                    grid.innerHTML = "<p>No templates available right now.</p>";
-                }
-            } catch (error) {
-                console.error("Error fetching home templates:", error);
-            }
+            } catch (error) { console.error("Error fetching home templates:", error); }
         }
 
-        // --- PORTFOLIO LOGIC ---
         async function fetchProjects() {
-            try {
-                const querySnapshot = await getDocs(portfolioCollection);
-                projects = [];
-                querySnapshot.forEach((doc) => {
-                    projects.push({ id: doc.id, ...doc.data() });
-                });
-                projects.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
-                window.renderProjects();
-            } catch (error) { console.error("Error:", error); }
+            const q = await getDocs(portfolioCollection);
+            projects = [];
+            q.forEach((doc) => { projects.push({ id: doc.id, ...doc.data() }); });
+            projects.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
         }
 
         window.openLogin = function() { document.getElementById('loginModal').style.display = 'flex'; }
-
         window.handleLogin = async function() {
-            const email = document.getElementById('email').value;
-            const pass = document.getElementById('password').value;
             try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, pass);
-                if (userCredential.user.email === "superman@sharmaji.com") {
-                    isAdmin = true;
-                    alert("Admin Logged In!");
-                } else {
-                    alert("Logged in!");
-                }
+                const uc = await signInWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('password').value);
+                if (uc.user.email === "superman@sharmaji.com") isAdmin = true;
                 document.getElementById('loginModal').style.display = 'none';
-                const addBtn = document.getElementById('adminAddBtn');
-                if(addBtn) addBtn.style.display = isAdmin ? "inline-block" : "none";
-                window.renderProjects(); 
-            } catch (error) { alert("Login Failed: " + error.message); }
+                window.renderProjects();
+            } catch (e) { alert(e.message); }
         }
-
         window.handleSignUp = async function() {
-            const email = document.getElementById('email').value;
-            const pass = document.getElementById('password').value;
-            if(pass.length < 6) { alert("Password min 6 chars."); return; }
-            try {
-                await createUserWithEmailAndPassword(auth, email, pass);
-                alert("Account Created!");
-                document.getElementById('loginModal').style.display = 'none';
-            } catch (error) { alert("Error: " + error.message); }
+            try { await createUserWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('password').value); document.getElementById('loginModal').style.display = 'none'; } catch (e) { alert(e.message); }
         }
 
         window.openPortfolio = function() { 
             document.getElementById('portfolioModal').style.display = 'flex'; 
-            if(projects.length === 0) fetchProjects(); else window.renderProjects();
-            const addBtn = document.getElementById('adminAddBtn');
-            addBtn.style.display = isAdmin ? "inline-block" : "none";
+            if(projects.length === 0) fetchProjects().then(renderProjects); else renderProjects();
+            document.getElementById('adminAddBtn').style.display = isAdmin ? "inline-block" : "none";
         }
-
         window.closePortfolio = function() { document.getElementById('portfolioModal').style.display = 'none'; }
-
         window.renderProjects = function() {
-            const grid = document.getElementById('portfolioGrid');
-            grid.innerHTML = ""; 
+            const grid = document.getElementById('portfolioGrid'); grid.innerHTML = ""; 
             projects.forEach(proj => {
-                let card = document.createElement('div');
-                card.className = 'portfolio-card';
-                let deleteHtml = isAdmin ? `<button class="delete-btn" style="display:flex;" onclick="window.deleteProject('${proj.id}', event)"><i class='bx bx-trash'></i></button>` : '';
-                let coverImage = (proj.images && proj.images.length > 0) ? proj.images[0] : 'https://via.placeholder.com/300';
-                card.innerHTML = `${deleteHtml}<img src="${coverImage}" class="portfolio-img" onclick="window.openGallery('${proj.id}')"><div class="portfolio-info"><h4>${proj.title}</h4><p>${proj.desc}</p><button onclick="window.openGallery('${proj.id}')" style="background:none; border:none; color:var(--primary-blue); font-weight:600; cursor:pointer;">View Website &rarr;</button></div>`;
-                grid.appendChild(card);
+                let del = isAdmin ? `<button class="delete-btn" style="display:flex;" onclick="window.deleteProject('${proj.id}', event)">X</button>` : '';
+                let img = (proj.images && proj.images.length > 0) ? proj.images[0] : '';
+                grid.innerHTML += `<div class="portfolio-card">${del}<img src="${img}" class="portfolio-img" onclick="window.openGallery('${proj.id}')"><div class="portfolio-info"><h4>${proj.title}</h4></div></div>`;
             });
         }
-
         window.openAddModal = function() { document.getElementById('addProjectModal').style.display = 'flex'; }
-
         window.saveProject = async function() {
-            const title = document.getElementById('newTitle').value;
-            const desc = document.getElementById('newDesc').value;
-            const link = document.getElementById('newLink').value;
-            const rawImages = document.getElementById('newImages').value;
-            const images = rawImages.split(/[\n,]+/).map(url => url.trim()).filter(url => url !== "");
-
-            if (title && images.length > 0) {
-                try {
-                    await addDoc(portfolioCollection, { title, desc, link, images, createdAt: new Date() });
-                    alert("Project Uploaded!");
-                    document.getElementById('addProjectModal').style.display = 'none';
-                    fetchProjects();
-                } catch(e) { alert("Error: " + e.message); }
-            } else { alert("Please add Title and Image."); }
+            try {
+                await addDoc(portfolioCollection, { title: document.getElementById('newTitle').value, desc: document.getElementById('newDesc').value, link: document.getElementById('newLink').value, images: document.getElementById('newImages').value.split(','), createdAt: new Date() });
+                document.getElementById('addProjectModal').style.display = 'none';
+                fetchProjects().then(renderProjects);
+            } catch(e) { alert(e.message); }
         }
-
-        window.deleteProject = async function(id, event) {
-            event.stopPropagation();
-            if(confirm("Delete this project?")) {
-                try {
-                    await deleteDoc(doc(db, "portfolio", id));
-                    projects = projects.filter(p => p.id !== id);
-                    window.renderProjects();
-                } catch(e) { alert("Error: " + e.message); }
-            }
-        }
-
+        window.deleteProject = async function(id, e) { e.stopPropagation(); if(confirm("Delete?")) { await deleteDoc(doc(db, "portfolio", id)); fetchProjects().then(renderProjects); } }
+        
         window.openGallery = function(id) {
-            const proj = projects.find(p => p.id === id);
-            if(!proj) return;
-            document.getElementById('galleryTitle').innerText = proj.title;
-            document.getElementById('galleryDesc').innerText = proj.desc;
-            document.getElementById('galleryLink').href = proj.link;
-            const body = document.getElementById('galleryBody');
-            body.innerHTML = ""; 
-            if(proj.images) {
-                proj.images.forEach(imgUrl => {
-                    let img = document.createElement('img');
-                    img.src = imgUrl; img.className = 'gallery-img'; body.appendChild(img);
-                });
-            }
+            const p = projects.find(x => x.id === id);
+            document.getElementById('galleryTitle').innerText = p.title;
+            document.getElementById('galleryLink').href = p.link;
+            document.getElementById('galleryBody').innerHTML = p.images.map(i => `<img src="${i}" class="gallery-img">`).join('');
             document.getElementById('galleryModal').style.display = 'flex';
         }
 
-        window.onclick = function(event) {
-            const modals = ['loginModal', 'portfolioModal', 'addProjectModal', 'galleryModal'];
-            modals.forEach(id => { if (event.target == document.getElementById(id)) document.getElementById(id).style.display = "none"; });
-        }
-
-        let menuIcon = document.querySelector('#menu-icon');
-        let navbar = document.querySelector('.navbar');
+        window.onclick = function(e) { if(e.target.classList.contains('modal')) e.target.style.display = "none"; }
+        let menuIcon = document.querySelector('#menu-icon'); let navbar = document.querySelector('.navbar');
         menuIcon.onclick = () => { menuIcon.classList.toggle('bx-x'); navbar.classList.toggle('active'); };
-        window.onscroll = () => { menuIcon.classList.remove('bx-x'); navbar.classList.remove('active'); reveal(); };
-
-        function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
-            for (var i = 0; i < reveals.length; i++) {
-                if (reveals[i].getBoundingClientRect().top < window.innerHeight - 150) reveals[i].classList.add('active');
-            }
-        }
-        reveal();
-
-        new Typed(".auto-type", { strings: ["Full Stack Developer", "Web Developer", "UI/UX Designer"], typeSpeed: 100, backSpeed: 60, loop: true });
-
-        // Load Home Data
+        
+        function reveal() { document.querySelectorAll('.reveal').forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight - 150) r.classList.add('active'); }); }
+        window.onscroll = reveal; reveal();
+        new Typed(".auto-type", { strings: ["Full Stack Developer", "Web Developer"], typeSpeed: 100, backSpeed: 60, loop: true });
+        
         fetchHomeTemplates();
-        fetchProjects();
-
-        onAuthStateChanged(auth, (user) => {
-            if (user && user.email === "superman@sharmaji.com") { isAdmin = true; document.getElementById('loginBtnLabel').innerText = "Admin"; }
-            else if (user) { isAdmin = false; document.getElementById('loginBtnLabel').innerText = "Account"; }
-            else { isAdmin = false; document.getElementById('loginBtnLabel').innerText = "Login"; }
-        });
+        onAuthStateChanged(auth, (u) => { isAdmin = (u && u.email === "superman@sharmaji.com"); document.getElementById('loginBtnLabel').innerText = u ? (isAdmin ? "Admin" : "Account") : "Login"; });
     </script>
 </body>
 </html>
