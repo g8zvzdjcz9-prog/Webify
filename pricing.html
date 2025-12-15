@@ -4,171 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing & Template Store - Web Design</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* --- GLOBAL VARIABLES --- */
-        :root {
-            --primary: #4f46e5;
-            --primary-dark: #4338ca;
-            --secondary: #0f172a;
-            --accent: #06b6d4;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
-            --text-gray: #64748b;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-            --card-radius: 16px;
-        }
-
+        :root { --primary: #4f46e5; --secondary: #0f172a; --bg-light: #f8fafc; --white: #ffffff; --text-gray: #64748b; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg-light); color: var(--secondary); line-height: 1.6; }
 
-        /* --- HEADER --- */
-        header {
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            position: fixed; top: 0; width: 100%; padding: 1rem 10%; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #e2e8f0;
-            transition: 0.3s;
-        }
+        header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: fixed; top: 0; width: 100%; padding: 1rem 10%; z-index: 1000; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; }
         .logo { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; }
-        
         .nav-links { display: flex; align-items: center; }
-        .nav-links a { margin-left: 25px; text-decoration: none; color: var(--secondary); font-weight: 500; transition: 0.3s; font-size: 0.95rem; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        .hire-btn { background: var(--primary); color: white !important; padding: 10px 25px; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3); }
-
+        .nav-links a { margin-left: 25px; text-decoration: none; color: var(--secondary); font-weight: 500; transition: 0.3s; }
+        .hire-btn { background: var(--primary); color: white !important; padding: 10px 25px; border-radius: 50px; }
         #menu-icon { display: none; font-size: 1.8rem; color: var(--secondary); cursor: pointer; }
 
-        /* --- HERO --- */
         .hero { padding: 140px 10% 80px; text-align: center; background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%); }
-        .hero h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 700; color: var(--secondary); margin-bottom: 15px; }
-        .badge { background: #dbeafe; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; display: inline-block; margin-bottom: 15px; }
+        .hero h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 700; margin-bottom: 15px; }
+        .badge { background: #dbeafe; color: var(--primary); padding: 5px 15px; border-radius: 20px; font-weight: 600; display: inline-block; margin-bottom: 15px; }
 
-        /* --- PRICING --- */
         .pricing-section { padding: 50px 10%; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .price-card {
-            background: var(--white); border-radius: var(--card-radius); padding: 40px 30px;
-            box-shadow: var(--shadow); border: 1px solid #e2e8f0; position: relative; overflow: hidden;
-            transition: transform 0.3s ease; display: flex; flex-direction: column;
-        }
+        .price-card { background: var(--white); border-radius: 16px; padding: 40px 30px; border: 1px solid #e2e8f0; position: relative; transition: transform 0.3s ease; display: flex; flex-direction: column; }
         .price-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .price-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
         .plan-price { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; }
         .features-list { list-style: none; margin-bottom: 30px; flex-grow: 1; }
-        .features-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-gray); display: flex; align-items: center; gap: 10px; }
-        .btn-full { display: block; width: 100%; padding: 14px; text-align: center; background: var(--secondary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; transition: 0.3s; }
-        .btn-full:hover { background: var(--primary); }
-        .price-card.popular { background: #fff; border: 2px solid var(--primary); transform: scale(1.05); }
+        .features-list li { margin-bottom: 12px; color: var(--text-gray); display: flex; align-items: center; gap: 10px; }
+        .btn-full { display: block; width: 100%; padding: 14px; text-align: center; background: var(--secondary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .price-card.popular { border: 2px solid var(--primary); transform: scale(1.05); }
 
-        /* --- TEMPLATE CATALOG --- */
+        /* --- TEMPLATE CATALOG (Desktop) --- */
         .catalog-section { padding: 80px 10%; background: #ffffff; }
-        /* 2 Columns on Desktop */
-        .template-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); 
-            gap: 30px; 
-        }
-        .template-card {
-            background: white; border: 1px solid #f1f5f9; border-radius: 16px; overflow: hidden;
-            transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; position: relative;
-        }
-        .template-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(45%, 1fr)); gap: 30px; }
+        .template-card { background: white; border: 1px solid #f1f5f9; border-radius: 16px; overflow: hidden; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; position: relative; }
         .t-image-container { position: relative; height: 240px; background: #eee; overflow: hidden; cursor: pointer; }
         .t-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .template-card:hover .t-img { transform: scale(1.05); }
         .t-price-tag { position: absolute; bottom: 10px; right: 10px; background: rgba(15, 23, 42, 0.9); color: white; padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 0.9rem; }
-        
         .t-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .t-title { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--secondary); margin-bottom: 10px; }
-        
-        /* Restricted Features View (Only 1 line) */
-        .t-features { 
-            margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; 
-            height: 32px; overflow: hidden; 
-        }
+        .t-title { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+        .t-features { margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 8px; height: 32px; overflow: hidden; }
         .t-badge { font-size: 0.75rem; background: #eff6ff; color: var(--primary); padding: 4px 10px; border-radius: 4px; font-weight: 600; }
         
-        /* --- ACTION BUTTONS (FIXED) --- */
+        /* Buttons */
         .t-actions { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
-        .btn-view {
-            border: 1px solid var(--primary); background: transparent; color: var(--primary);
-            padding: 12px; text-align: center; border-radius: 6px; text-decoration: none; 
-            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.3s;
-        }
-        .btn-view:hover { background: #eff6ff; }
-
-        .btn-buy { 
-            background: #25D366; color: white; border: none; /* WhatsApp Green */
-            padding: 12px; text-align: center; border-radius: 6px; text-decoration: none; 
-            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: 0.3s;
-        }
-        .btn-buy:hover { background: #20bd5a; transform: translateY(-2px); }
-
-        .delete-btn {
-            position: absolute; top: 10px; right: 10px; z-index: 100;
-            background: #ef4444; color: white; border: none; padding: 8px;
-            border-radius: 50%; cursor: pointer; font-size: 14px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3); display: none;
-        }
-
-        /* --- MODALS --- */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
-        
-        .detail-content { 
-            background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 16px; 
-            display: flex; flex-direction: column; overflow: hidden; position: relative;
-        }
-        .detail-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        .detail-body { padding: 0; overflow-y: auto; display: flex; flex-direction: column; }
-        
-        .detail-img-box { width: 100%; height: 350px; background: #f0f0f0; position: relative; }
-        .detail-img { width: 100%; height: 100%; object-fit: contain; background: #0f172a; }
-        .detail-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; transform: translateY(-50%); }
-        .detail-nav button { background: rgba(255,255,255,0.2); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%; font-size: 1.5rem; transition:0.3s; }
-        .detail-nav button:hover { background: rgba(255,255,255,0.4); }
-        
-        .detail-info { padding: 25px; }
-        .detail-tags { margin: 15px 0; display: flex; gap: 10px; flex-wrap: wrap; }
-        .detail-price { font-size: 1.8rem; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
-
-        /* Form Box */
-        .form-box { background: white; padding: 30px; border-radius: 12px; width: 400px; max-width: 90%; }
-        .form-box h3 { margin-bottom: 20px; color: var(--secondary); }
-        .form-input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        .form-btn { width: 100%; background: var(--primary); color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .btn-view { border: 1px solid var(--primary); color: var(--primary); padding: 10px; text-align: center; border-radius: 6px; font-weight: 600; cursor: pointer; background: transparent; }
+        .btn-buy { background: #25D366; color: white; padding: 10px; text-align: center; border-radius: 6px; font-weight: 600; text-decoration: none; display: block; }
+        .delete-btn { position: absolute; top: 10px; right: 10px; background: red; color: white; border: none; padding: 8px; border-radius: 50%; display: none; cursor: pointer; z-index: 100; }
 
         .cta-section { padding: 80px 10%; text-align: center; }
         .cta-box { background: linear-gradient(135deg, var(--primary), #3730a3); border-radius: 24px; padding: 60px 20px; color: white; }
         .whatsapp-btn { background: #25D366; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; }
-        .admin-trigger { font-size: 0.8rem; color: #ccc; cursor: pointer; text-decoration: none; margin-top: 20px; display: inline-block; }
 
+        /* --- MODALS --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        .detail-content { background: white; width: 90%; max-width: 800px; max-height: 90vh; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        .detail-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .detail-img-box { width: 100%; height: 350px; background: #f0f0f0; position: relative; }
+        .detail-img { width: 100%; height: 100%; object-fit: contain; background: #0f172a; cursor: zoom-in; } /* Cursor Zoom */
+        .detail-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 10px; transform: translateY(-50%); }
+        .detail-nav button { background: rgba(255,255,255,0.2); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%; font-size: 1.5rem; }
+        .detail-info { padding: 25px; overflow-y: auto; }
+        .form-box { background: white; padding: 30px; border-radius: 12px; width: 400px; max-width: 90%; }
+        .form-input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .form-btn { width: 100%; background: var(--primary); color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; }
+
+        /* --- ZOOM OVERLAY (NEW) --- */
+        #zoomOverlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 3000;
+            justify-content: center; align-items: center;
+        }
+        #zoomOverlay img { max-width: 95%; max-height: 95%; object-fit: contain; }
+        .close-zoom { position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; cursor: pointer; }
+
+        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
             header { padding: 1rem 5%; }
             #menu-icon { display: block; z-index: 1001; }
-            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; align-items: flex-start; padding: 20px; border-bottom: 1px solid #eee; display: none; box-shadow: 0 10px 15px rgba(0,0,0,0.05); }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 20px; display: none; }
             .nav-links.active { display: flex; }
-            .nav-links a { margin: 10px 0; width: 100%; font-size: 1.1rem; }
-            .hire-btn { width: 100%; text-align: center; display: inline-block; margin-top: 10px; }
-            .hero { padding: 120px 5% 60px; }
-            .pricing-section, .catalog-section, .cta-section { padding: 60px 5%; }
             .pricing-grid { grid-template-columns: 1fr; }
-            .price-card.popular { transform: scale(1); }
-            /* Mobile: 1 column for templates */
-            .template-grid { grid-template-columns: 1fr; } 
-            .cta-box { padding: 40px 20px; }
+            
+            /* --- FIXED: 2 COLUMNS ON MOBILE --- */
+            .template-grid { 
+                grid-template-columns: repeat(2, 1fr) !important; /* Force 2 Columns */
+                gap: 10px; 
+            }
+            .t-image-container { height: 140px; } /* Smaller images */
+            .t-content { padding: 12px; }
+            .t-title { font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+            .t-actions { gap: 5px; }
+            .btn-view, .btn-buy { padding: 8px 5px; font-size: 0.8rem; }
             .detail-img-box { height: 250px; }
-            .whatsapp-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
         <a href="index.html" class="logo">WebiFy.</a>
         <i class="fas fa-bars" id="menu-icon" onclick="window.toggleMenu()"></i>
@@ -181,275 +112,177 @@
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="hero">
         <span class="badge">🚀 Launch Your Business Online</span>
         <h1>Affordable Websites & <br>Premium Templates</h1>
-        <p>I build clean, modern, and fast-loading websites tailored for small businesses.</p>
     </section>
 
-    <!-- PRICING SECTION -->
     <section id="pricing" class="pricing-section">
         <h2 style="text-align:center; margin-bottom:40px;">Custom Plans</h2>
         <div class="pricing-grid">
             <div class="price-card">
                 <h3 class="plan-name">Starter</h3><div class="plan-price">₹499</div>
-                <ul class="features-list"><li><i class="fas fa-check"></i> 1 Page Website</li><li><i class="fas fa-check"></i> Mobile Responsive</li><li><i class="fas fa-check"></i> Contact Button</li></ul>
+                <ul class="features-list"><li>1 Page Website</li><li>Mobile Responsive</li></ul>
                 <a href="https://wa.me/919376917149?text=Hello,%20Starter%20Plan." target="_blank" class="btn-full">Choose Starter</a>
             </div>
             <div class="price-card popular">
                 <h3 class="plan-name">Professional</h3><div class="plan-price">₹1,599</div>
-                <ul class="features-list"><li><i class="fas fa-check"></i> 5 Pages Website</li><li><i class="fas fa-check"></i> Basic SEO</li><li><i class="fas fa-check"></i> Contact Form</li></ul>
+                <ul class="features-list"><li>5 Pages Website</li><li>Basic SEO</li></ul>
                 <a href="https://wa.me/919376917149?text=Hello,%20Professional%20Plan." target="_blank" class="btn-full" style="background:var(--primary)">Choose Professional</a>
             </div>
             <div class="price-card">
                 <h3 class="plan-name">Premium</h3><div class="plan-price">₹4,000</div>
-                <ul class="features-list"><li><i class="fas fa-check"></i> 10 Pages Website</li><li><i class="fas fa-check"></i> Animations</li><li><i class="fas fa-check"></i> Speed Boost</li></ul>
+                <ul class="features-list"><li>10 Pages Website</li><li>Animations</li></ul>
                 <a href="https://wa.me/919376917149?text=Hello,%20Premium%20Plan." target="_blank" class="btn-full">Choose Premium</a>
             </div>
         </div>
     </section>
 
-    <!-- TEMPLATE CATALOG -->
     <section id="catalog" class="catalog-section">
-        <h2 style="text-align:center; margin-bottom:10px;">Ready-Made Templates</h2>
-        <p style="text-align:center; color:#666; margin-bottom:40px;">High-quality website designs ready for deployment.</p>
-
-        <!-- Template Grid (Populated by JS) -->
+        <h2 style="text-align:center; margin-bottom:40px;">Ready-Made Templates</h2>
         <div class="template-grid" id="templateGrid"></div>
     </section>
 
-    <!-- CTA & FOOTER -->
     <section class="cta-section">
         <div class="cta-box">
             <h2>Start Your Website Today</h2>
-            <p>Ready to take your business online?</p>
-            <a href="https://wa.me/919376917149?text=Hello,%20I%20want%20to%20discuss%20a%20new%20website%20project." target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="https://wa.me/919376917149" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
-        <div style="margin-top: 50px;">
-            <span class="admin-trigger" onclick="window.openAdminLogin()">Admin Access</span>
-        </div>
+        <div style="margin-top: 50px;"><span class="admin-trigger" onclick="document.getElementById('loginModal').style.display='flex'">Admin Access</span></div>
     </section>
 
-    <!-- ================= MODALS ================= -->
-
-    <!-- 1. DETAIL POPUP (Full Info) -->
+    <!-- DETAIL POPUP -->
     <div id="detailModal" class="modal">
         <div class="detail-content">
             <div class="detail-header">
-                <h3 id="dTitle" style="margin:0;">Website Title</h3>
+                <h3 id="dTitle" style="margin:0;">Title</h3>
                 <i class="fas fa-times" style="font-size:1.5rem; cursor:pointer;" onclick="document.getElementById('detailModal').style.display='none'"></i>
             </div>
-            <div class="detail-body">
-                <div class="detail-img-box">
-                    <img id="dImg" class="detail-img" src="" alt="">
-                    <div class="detail-nav">
-                        <button onclick="window.prevImage()"><i class="fas fa-chevron-left"></i></button>
-                        <button onclick="window.nextImage()"><i class="fas fa-chevron-right"></i></button>
-                    </div>
+            <div class="detail-img-box">
+                <!-- Added onclick to trigger Zoom -->
+                <img id="dImg" class="detail-img" src="" alt="" onclick="window.openZoom()">
+                <div class="detail-nav">
+                    <button onclick="window.prevImage()"><i class="fas fa-chevron-left"></i></button>
+                    <button onclick="window.nextImage()"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                <div class="detail-info">
-                    <div id="dPrice" class="detail-price">₹2,500</div>
-                    <div id="dTags" class="detail-tags"></div>
-                    <p style="color:#666; margin-bottom:20px;">Includes complete setup, hosting guidance, and minor customization. Click Buy Now to contact on WhatsApp.</p>
-                    <a id="dBuyBtn" href="#" target="_blank" class="btn-buy" style="display:block; width:100%; background: #25D366;">
-                        <i class="fab fa-whatsapp"></i> Buy This Template
-                    </a>
-                </div>
+            </div>
+            <div class="detail-info">
+                <div id="dPrice" style="font-size:1.5rem; color:#4f46e5; font-weight:700;">₹2,500</div>
+                <p style="font-size:0.8rem; color:#666;">(Touch photo to Zoom)</p>
+                <div id="dTags" style="margin:10px 0;"></div>
+                <a id="dBuyBtn" href="#" target="_blank" class="btn-buy" style="margin-top:20px; background:#25D366;">Buy on WhatsApp</a>
             </div>
         </div>
     </div>
 
-    <!-- 2. ADMIN LOGIN MODAL -->
-    <div id="loginModal" class="modal">
-        <div class="form-box">
-            <h3>Account Login</h3>
-            <input type="email" id="email" class="form-input" placeholder="Email Address">
-            <input type="password" id="password" class="form-input" placeholder="Password">
-            <button class="form-btn" onclick="window.handleLogin()">Login</button>
-            <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px; background:none; border:none; cursor:pointer; width:100%;">Cancel</button>
-        </div>
+    <!-- ZOOM OVERLAY -->
+    <div id="zoomOverlay" onclick="this.style.display='none'">
+        <i class="fas fa-times close-zoom"></i>
+        <img id="zoomImg" src="">
     </div>
 
-    <!-- 3. ADD TEMPLATE FORM MODAL -->
+    <!-- ADMIN MODALS -->
+    <div id="loginModal" class="modal">
+        <div class="form-box">
+            <h3>Login</h3>
+            <input type="email" id="email" class="form-input" placeholder="Email"><input type="password" id="password" class="form-input" placeholder="Password">
+            <button class="form-btn" onclick="window.handleLogin()">Login</button>
+            <button onclick="document.getElementById('loginModal').style.display='none'" style="margin-top:10px; border:none; background:none;">Cancel</button>
+        </div>
+    </div>
     <div id="addModal" class="modal">
         <div class="form-box">
-            <h3>Add New Website</h3>
-            <input type="text" id="newTitle" class="form-input" placeholder="Website Name">
-            <input type="text" id="newPrice" class="form-input" placeholder="Price (e.g. ₹2,500)">
-            <input type="text" id="newCover" class="form-input" placeholder="Cover Image URL">
-            <textarea id="newFeatures" class="form-input" placeholder="Features (comma separated: Clean, Fast, SEO)"></textarea>
-            <textarea id="newGallery" class="form-input" placeholder="Gallery URLs (comma separated)"></textarea>
-            <button class="form-btn" onclick="window.addNewTemplate()">Add Website</button>
-            <button onclick="document.getElementById('addModal').style.display='none'" style="margin-top:10px; background:none; border:none; cursor:pointer; width:100%;">Close</button>
+            <h3>Add Website</h3>
+            <input type="text" id="newTitle" class="form-input" placeholder="Name">
+            <input type="text" id="newPrice" class="form-input" placeholder="Price">
+            <input type="text" id="newCover" class="form-input" placeholder="Cover URL">
+            <textarea id="newFeatures" class="form-input" placeholder="Features"></textarea>
+            <textarea id="newGallery" class="form-input" placeholder="Gallery URLs"></textarea>
+            <button class="form-btn" onclick="window.addNewTemplate()">Add</button>
+            <button onclick="document.getElementById('addModal').style.display='none'" style="margin-top:10px; border:none; background:none;">Close</button>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
 
-        const firebaseConfig = {
-          apiKey: "AIzaSyDAjm5p9EJueq3eMq7WY9u7cT5GDppedaY",
-          authDomain: "devstudio-36b8e.firebaseapp.com",
-          projectId: "devstudio-36b8e",
-          storageBucket: "devstudio-36b8e.firebasestorage.app",
-          messagingSenderId: "220640508882",
-          appId: "1:220640508882:web:9171e28a580ab6dec1e60b",
-          measurementId: "G-0FSZ1500XG"
-        };
+        const firebaseConfig = { apiKey: "AIzaSyDAjm5p9EJueq3eMq7WY9u7cT5GDppedaY", authDomain: "devstudio-36b8e.firebaseapp.com", projectId: "devstudio-36b8e", storageBucket: "devstudio-36b8e.firebasestorage.app", messagingSenderId: "220640508882", appId: "1:220640508882:web:9171e28a580ab6dec1e60b", measurementId: "G-0FSZ1500XG" };
+        const app = initializeApp(firebaseConfig); const auth = getAuth(app); const db = getFirestore(app); const templateCollection = collection(db, "templates");
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const templateCollection = collection(db, "templates");
-
-        window.toggleMenu = function() {
-            const nav = document.getElementById('navLinks');
-            const icon = document.getElementById('menu-icon');
-            nav.classList.toggle('active');
-            if(nav.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
-            else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
-        }
-
-        let templates = [];
-        let isAdmin = false; 
+        window.toggleMenu = function() { const nav = document.getElementById('navLinks'); const icon = document.getElementById('menu-icon'); nav.classList.toggle('active'); if(nav.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); } else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); } }
+        let templates = []; let isAdmin = false; 
 
         async function fetchTemplates() {
-            try {
-                const q = await getDocs(templateCollection);
-                templates = [];
-                q.forEach((doc) => { templates.push({ id: doc.id, ...doc.data() }); });
-                window.renderTemplates();
-            } catch (e) { console.error("Error fetching templates:", e); }
+            const q = await getDocs(templateCollection);
+            templates = [];
+            q.forEach((doc) => { templates.push({ id: doc.id, ...doc.data() }); });
+            window.renderTemplates();
         }
 
         window.renderTemplates = function() {
-            const grid = document.getElementById('templateGrid');
-            grid.innerHTML = "";
+            const grid = document.getElementById('templateGrid'); grid.innerHTML = "";
             templates.forEach((item, index) => {
-                let featuresHtml = item.features ? item.features.map(f => `<span class="t-badge">${f.trim()}</span>`).join('') : '';
-                let deleteBtnHtml = isAdmin ? `<button class="delete-btn" style="display:block" onclick="window.deleteTemplate('${item.id}', event)"><i class="fas fa-trash"></i></button>` : '';
-
-                // Generate WhatsApp Link directly for the Buy Button
-                let waMsg = `Hello, I want to buy the "${item.title}" template for ${item.price}.`;
-                let waLink = `https://wa.me/919376917149?text=${encodeURIComponent(waMsg)}`;
-
-                let card = `
+                let tags = item.features ? item.features.map(f => `<span class="t-badge">${f.trim()}</span>`).join('') : '';
+                let del = isAdmin ? `<button class="delete-btn" style="display:block" onclick="window.deleteTemplate('${item.id}', event)">X</button>` : '';
+                let waLink = `https://wa.me/919376917149?text=${encodeURIComponent("Buying: " + item.title)}`;
+                grid.innerHTML += `
                     <div class="template-card">
-                        ${deleteBtnHtml}
-                        <div class="t-image-container" onclick="window.openDetail(${index})">
-                            <img src="${item.cover}" alt="${item.title}" class="t-img">
-                            <div class="t-price-tag">${item.price}</div>
-                        </div>
+                        ${del}
+                        <div class="t-image-container" onclick="window.openDetail(${index})"><img src="${item.cover}" class="t-img"><div class="t-price-tag">${item.price}</div></div>
                         <div class="t-content">
                             <h3 class="t-title">${item.title}</h3>
-                            <div class="t-features">${featuresHtml}</div>
-                            
-                            <!-- TWO BUTTONS Added Here -->
+                            <div class="t-features">${tags}</div>
                             <div class="t-actions">
-                                <button class="btn-view" onclick="window.openDetail(${index})">View Details</button>
-                                <a href="${waLink}" target="_blank" class="btn-buy">Buy Now</a>
+                                <button class="btn-view" onclick="window.openDetail(${index})">View</button>
+                                <a href="${waLink}" target="_blank" class="btn-buy">Buy</a>
                             </div>
                         </div>
-                    </div>
-                `;
-                grid.innerHTML += card;
+                    </div>`;
             });
         }
         
-        // --- DETAIL POPUP LOGIC ---
-        let currentIdx = 0;
-        let imgIdx = 0;
-        
+        let currentIdx = 0; let imgIdx = 0;
         window.openDetail = function(index) {
-            currentIdx = index;
-            imgIdx = 0;
-            const item = templates[index];
-            
-            // Populate Modal
+            currentIdx = index; imgIdx = 0; const item = templates[index];
             document.getElementById('dTitle').innerText = item.title;
             document.getElementById('dPrice').innerText = item.price;
-            
-            // Tags
-            let featuresHtml = item.features ? item.features.map(f => `<span class="t-badge">${f.trim()}</span>`).join('') : '';
-            document.getElementById('dTags').innerHTML = featuresHtml;
-
-            // Buy Link in Modal
-            let waMsg = `Hello, I saw the details of "${item.title}" (${item.price}) and I am interested.`;
-            document.getElementById('dBuyBtn').href = `https://wa.me/919376917149?text=${encodeURIComponent(waMsg)}`;
-
+            document.getElementById('dTags').innerHTML = item.features ? item.features.map(f => `<span class="t-badge">${f.trim()}</span>`).join('') : '';
+            document.getElementById('dBuyBtn').href = `https://wa.me/919376917149?text=${encodeURIComponent("Interested in " + item.title)}`;
             window.updateImage();
             document.getElementById('detailModal').style.display = "flex";
         }
-
         window.updateImage = function() {
             const item = templates[currentIdx];
-            const modalImg = document.getElementById('dImg');
-            // If gallery exists use it, else use cover
             let images = (item.gallery && item.gallery.length > 0) ? item.gallery : [item.cover];
-            
-            // Safety check for index
-            if(imgIdx < 0) imgIdx = images.length - 1;
-            if(imgIdx >= images.length) imgIdx = 0;
-
-            modalImg.src = images[imgIdx];
+            if(imgIdx < 0) imgIdx = images.length - 1; if(imgIdx >= images.length) imgIdx = 0;
+            document.getElementById('dImg').src = images[imgIdx];
         }
-
         window.nextImage = function() { imgIdx++; window.updateImage(); }
         window.prevImage = function() { imgIdx--; window.updateImage(); }
 
-        window.openAdminLogin = function() { document.getElementById('loginModal').style.display = 'flex'; }
+        // --- ZOOM LOGIC ---
+        window.openZoom = function() {
+            const src = document.getElementById('dImg').src;
+            document.getElementById('zoomImg').src = src;
+            document.getElementById('zoomOverlay').style.display = 'flex';
+        }
 
         window.handleLogin = async function() {
-            const email = document.getElementById('email').value;
-            const pass = document.getElementById('password').value;
             try {
-                const userCredential = await signInWithEmailAndPassword(auth, email, pass);
-                if (userCredential.user.email === "superman@sharmaji.com") {
-                    isAdmin = true;
-                    alert("Admin Logged In!");
-                    window.renderTemplates();
-                    document.getElementById('addModal').style.display = 'flex';
-                } else { alert("User Logged in (No Admin Access)"); }
+                const uc = await signInWithEmailAndPassword(auth, document.getElementById('email').value, document.getElementById('password').value);
+                if (uc.user.email === "superman@sharmaji.com") { isAdmin = true; window.renderTemplates(); document.getElementById('addModal').style.display = 'flex'; }
                 document.getElementById('loginModal').style.display = 'none';
-            } catch (error) { alert("Login Failed: " + error.message); }
+            } catch (e) { alert(e.message); }
         }
-
         window.addNewTemplate = async function() {
-            const title = document.getElementById('newTitle').value;
-            const price = document.getElementById('newPrice').value;
-            const cover = document.getElementById('newCover').value;
-            const featuresRaw = document.getElementById('newFeatures').value;
-            const galleryRaw = document.getElementById('newGallery').value;
-
-            if(!title || !price || !cover) { alert("Please fill basic details!"); return; }
-
-            const newTemp = {
-                title: title, price: price, cover: cover,
-                features: featuresRaw.split(','),
-                gallery: galleryRaw.split(',')
-            };
-
             try {
-                await addDoc(templateCollection, newTemp);
-                alert("Website Added!");
-                document.getElementById('addModal').style.display = 'none';
-                fetchTemplates();
-            } catch(e) { alert("Error: " + e.message); }
+                await addDoc(templateCollection, { title: document.getElementById('newTitle').value, price: document.getElementById('newPrice').value, cover: document.getElementById('newCover').value, features: document.getElementById('newFeatures').value.split(','), gallery: document.getElementById('newGallery').value.split(',') });
+                document.getElementById('addModal').style.display = 'none'; fetchTemplates();
+            } catch(e) { alert(e.message); }
         }
-
-        window.deleteTemplate = async function(id, event) {
-            event.stopPropagation();
-            if(confirm("Delete this website?")) {
-                try {
-                    await deleteDoc(doc(db, "templates", id));
-                    templates = templates.filter(t => t.id !== id);
-                    window.renderTemplates();
-                } catch(e) { alert("Error deleting: " + e.message); }
-            }
-        }
+        window.deleteTemplate = async function(id, e) { e.stopPropagation(); if(confirm("Delete?")) { await deleteDoc(doc(db, "templates", id)); fetchTemplates(); } }
 
         fetchTemplates();
     </script>
